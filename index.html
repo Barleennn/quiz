@@ -1,0 +1,2301 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quiz</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+        }
+        .quiz-container {
+            background: white;
+            border-radius: 15px;
+            padding: 30px;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+            max-width: 600px;
+            width: 100%;
+        }
+        .question {
+            font-size: 1.2em;
+            color: #2c3e50;
+            margin-bottom: 20px;
+            line-height: 1.5;
+        }
+        .options {
+            display: grid;
+            gap: 10px;
+        }
+        .option {
+            padding: 15px;
+            border: 2px solid #e0e0e0;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            background: white;
+        }
+        .option:hover {
+            background: #f8f9fa;
+            transform: translateY(-2px);
+        }
+        .option.correct {
+            background: #d4edda;
+            border-color: #28a745;
+            color: #155724;
+        }
+        .option.incorrect {
+            background: #f8d7da;
+            border-color: #dc3545;
+            color: #721c24;
+        }
+        .score {
+            text-align: right;
+            color: #6c757d;
+            margin-bottom: 20px;
+        }
+        @media (max-width: 480px) {
+            .quiz-container {
+                padding: 15px;
+            }
+            .question {
+                font-size: 1em;
+            }
+        }
+    </style>
+    <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+</head>
+<body>
+    <div class="quiz-container">
+        <div class="score">Правильных ответов: <span id="score">0</span></div>
+        <div class="question" id="question"></div>
+        <div class="options" id="options"></div>
+    </div>    <script>
+        const questions = [
+  {
+    "question": "Find the domain of the function: f(x) = √(x² - 1) + ln(x)",
+    "variants": [
+      "x ∈ [1; +∞)",
+      "x ∈ (-∞; -1) ∪ (1; +∞)",
+      "x ∈ (-∞; -1) ∪ (1; x)",
+      "x ∈ (-∞; x)"
+    ],
+    "correct_answer": "x ∈ (-∞; -1) ∪ (1; +∞)"
+  },
+  {
+    "question": "Find the range of the function: f(x) = 2x - 5, x ∈ [-2; 2]",
+    "variants": [
+      "-9; -1;",
+      "(-∞; -9) ∪ (-1) ∪ (9; +∞)",
+      "[-9, +∞)",
+      "(-∞; +∞)"
+    ],
+    "correct_answer": "(-∞; -9) ∪ (-1) ∪ (9; +∞)"
+  },
+  {
+    "question": "Find the range of the function: f(x) = |x - 1|, x ∈ [0; 5]",
+    "variants": [
+      "[0; 4]",
+      "(-∞; -4) ∪ (0) ∪ (4; +∞)",
+      "(-4; +∞)",
+      "[1; 4]",
+      "(-∞; ∞)"
+    ],
+    "correct_answer": "(-∞; -4) ∪ (0) ∪ (4; +∞)"
+  },
+  {
+    "question": "Find the range R(f), if f(x) = 2x - 5, x ∈ [-2; 2]",
+    "variants": [
+      "[-9; -1]",
+      "(9; -1)",
+      "(-∞; -9) ∪ (-1) ∪ (9; +∞)",
+      "[-9; +∞)",
+      "(-∞; +∞)"
+    ],
+    "correct_answer": "[-9; -1]"
+  },
+  {
+    "question": "Find the range R(f), if f(x) = |x - 1|, x ∈ [0; 5]",
+    "variants": [
+      "[0; 4]",
+      "(-∞; -4) ∪ (0) ∪ (4; +∞)",
+      "(-4; +∞)",
+      "[1; 4]",
+      "(-∞; ∞)"
+    ],
+    "correct_answer": "(-∞; -4) ∪ (4; +∞)"
+  },
+  {
+    "question": "Find the range R(f), if f(x) = x² + 2x - 3, x ∈ R",
+    "variants": [
+      "(-4; -1)",
+      "[-4; 4]",
+      "(-∞; -4) ∪ (4; +∞)"
+    ],
+    "correct_answer": "(-∞; -4) ∪ (4; +∞)"
+  },
+  {
+    "question": "Find the range R(f), if f(x) = x² - 1, x ∈ [-2; 2]",
+    "variants": [
+      "[-4; +∞)",
+      "(-∞; -1) ∪ (1; +∞)",
+      "(-∞; -1) ∪ (1; x)",
+      "(-∞; x)"
+    ],
+    "correct_answer": "(-∞; -1) ∪ (1; +∞)"
+  },
+  {
+    "question": "Find the range of the function f(x) = x^2 + 2x - 3, x ∈ R",
+    "variants": [
+      "(-∞; -4) ∪ (4; +∞)",
+      "(-∞; -4) ∪ (4; +∞)",
+      "(-∞; -4) ∪ (4; +∞)",
+      "(-∞; -4) ∪ (4; +∞)"
+    ],
+    "correct_answer": "(-∞; -4) ∪ (4; +∞)"
+  },
+  {
+    "question": "Find the range of the function f(x) = x^2 + 2x - 3, x ∈ R",
+    "variants": [
+      "(-∞; -4) ∪ (4; +∞)",
+      "(-∞; -4) ∪ (4; +∞)",
+      "(-∞; -4) ∪ (4; +∞)",
+      "(-∞; -4) ∪ (4; +∞)"
+    ],
+    "correct_answer": "(-∞; -4) ∪ (4; +∞)"
+  },
+  {
+    "question": "Find the range of the function f(x) = x^2 + 2x - 3, x ∈ R",
+    "variants": [
+      "(-∞; -4) ∪ (4; +∞)",
+      "(-∞; -4) ∪ (4; +∞)",
+      "(-∞; -4) ∪ (4; +∞)",
+      "(-∞; -4) ∪ (4; +∞)"
+    ],
+    "correct_answer": "(-∞; -4) ∪ (4; +∞)"
+  },
+  {
+    "question": "Find the range of the function f(x) = x^2 + 2x - 3, x ∈ R",
+    "variants": [
+      "(-∞; -4) ∪ (4; +∞)",
+      "(-∞; -4) ∪ (4; +∞)",
+      "(-∞; -4) ∪ (4; +∞)",
+      "(-∞; -4) ∪ (4; +∞)"
+    ],
+    "correct_answer": "(-∞; -4) ∪ (4; +∞)"
+  },
+  {
+    "question": "Determine the domain of the function: y = √(x² - 1) + ln x",
+    "variants": [
+      "x ∈ [1; +∞)",
+      "x ∈ (-∞; -1) ∪ (1; +∞)",
+      "x ∈ (-∞; -1) ∪ (1; x)",
+      "x ∈ (-∞; x)"
+    ],
+    "correct_answer": "x ∈ (-∞; -1) ∪ (1; +∞)"
+  },
+  {
+    "question": "Find range R(f), if f(x) = 2x - 5, x ∈ [-2; 2]",
+    "variants": [
+      "[-9; -1]",
+      "(-∞; -9) ∪ (-1; +∞)",
+      "[-9; +∞)",
+      "(-∞; +∞)"
+    ],
+    "correct_answer": "(-∞; -9) ∪ (-1; +∞)"
+  },
+  {
+    "question": "Find range R(f), if f(x) = |x - 1|, x ∈ [0; 5]",
+    "variants": [
+      "[0; 4]",
+      "(-∞; -4) ∪ (0) ∪ (4; +∞)",
+      "(-4; +∞)",
+      "[1; 4]",
+      "(-∞; ∞)"
+    ],
+    "correct_answer": "(-∞; -4) ∪ (4; +∞)"
+  },
+  {
+    "question": "Find range R(f), if f(x) = x² + 2x - 3, x ∈ R",
+    "variants": [
+      "(-4; -1)",
+      "[-4; 4]",
+      "(-∞; -4]",
+      "(-∞; -4) ∪ (4; +∞)",
+      "[-4; +∞)"
+    ],
+    "correct_answer": "(-∞; -4) ∪ (4; +∞)"
+  },
+  {
+    "question": "Find range R(f), if f(x) = x + 1/x, x ∈ (0; +∞)",
+    "variants": [
+      "(-2, 2)",
+      "[0; 2]",
+      "(1, +∞)",
+      "(-∞; -2) ∪ (2; +∞)",
+      "[2, +∞)"
+    ],
+    "correct_answer": "(-2, 2)"
+  },
+  {
+    "question": "Determine the domain of the function: y = √(x² - 1) + ln x",
+    "variants": [
+      "x ∈ [1; +∞)",
+      "x ∈ (-∞; -1) ∪ (1; +∞)",
+      "x ∈ (-∞; -1) ∪ (1; x)",
+      "x ∈ (-∞; x)"
+    ],
+    "correct_answer": "x ∈ (-∞; -1) ∪ (1; +∞)"
+  },
+  {
+    "question": "Determine the domain of the function: y = 5/(4 - x²)",
+    "variants": [
+      "x ∈ (-∞; -2) ∪ (-2; 2) ∪ (2; ∞)",
+      "x ∈ (-∞; 2)",
+      "x ∈ (2; ∞)",
+      "x ∈ (-∞; -2) ∪ (2; ∞)"
+    ],
+    "correct_answer": "x ∈ (-∞; -2) ∪ (-2; 2) ∪ (2; ∞)"
+  },
+  {
+    "question": "Determine the domain of the function: y = ln(x - 4) / (x - 7)",
+    "variants": [
+      "x ∈ (4, 7) ∪ (7, ∞)",
+      "x ∈ (4, ∞)",
+      "x ∈ (4, 7)",
+      "x ∈ (-∞; ∞)"
+    ],
+    "correct_answer": "x ∈ (4, 7) ∪ (7, ∞)"
+  },
+  {
+    "question": "Determine the domain of the function: y = √(x² - 1) + ln x",
+    "variants": [
+      "x ∈ [1; +∞)",
+      "x ∈ (-∞; -1) ∪ (1; +∞)",
+      "x ∈ (-∞; -1) ∪ (1; x)",
+      "x ∈ (-∞; x)"
+    ],
+    "correct_answer": "x ∈ (-∞; -1) ∪ (1; +∞)"
+  },
+  {
+    "question": "Determine the domain of the function: y = 4/√(2 - x) + ln x",
+    "variants": [
+      "x ∈ (0; 2)",
+      "x ∈ [-2; 2]",
+      "x ∈ (-∞; x)",
+      "x ∈ (-∞; -2) ∪ (2; +∞)"
+    ],
+    "correct_answer": "x ∈ (-∞; -2) ∪ (2; +∞)"
+  },
+  {
+    "question": "Determine the domain of the function: y = (7 - x) / (3 - x) + ln(x - 1)",
+    "variants": [
+      "x ∈ (1; 3) ∪ (3; +∞)",
+      "x ∈ (3; 7)",
+      "x ∈ (-∞; x)",
+      "x ∈ (3; x)"
+    ],
+    "correct_answer": "x ∈ (1; 3) ∪ (3; +∞)"
+  },
+  {
+    "question": "Determine the domain of the function: y = 4x - 7y + 26 = 0",
+    "variants": [
+      "x ∈ (-∞; -1) ∪ (1; +∞)",
+      "x ∈ (-∞; x)",
+      "x ∈ (-∞; x)",
+      "x ∈ (-∞; x)"
+    ],
+    "correct_answer": "x ∈ (-∞; -1) ∪ (1; +∞)"
+  },
+  {
+    "question": "Determine the domain of the function: y = 4x + 7y + 26 = 0",
+    "variants": [
+      "x ∈ (-∞; -1) ∪ (1; +∞)",
+      "x ∈ (-∞; x)",
+      "x ∈ (-∞; x)",
+      "x ∈ (-∞; x)"
+    ],
+    "correct_answer": "x ∈ (-∞; -1) ∪ (1; +∞)"
+  },
+  {
+    "question": "Determine the domain of the function: y = 4x - 7y - 26 = 0",
+    "variants": [
+      "x ∈ (-∞; -1) ∪ (1; +∞)",
+      "x ∈ (-∞; x)",
+      "x ∈ (-∞; x)",
+      "x ∈ (-∞; x)"
+    ],
+    "correct_answer": "x ∈ (-∞; -1) ∪ (1; +∞)"
+  },
+  {
+    "question": "Determine the domain of the function: y = 4x + 7y - 26 = 0",
+    "variants": [
+      "x ∈ (-∞; -1) ∪ (1; +∞)",
+      "x ∈ (-∞; x)",
+      "x ∈ (-∞; x)",
+      "x ∈ (-∞; x)"
+    ],
+    "correct_answer": "x ∈ (-∞; -1) ∪ (1; +∞)"
+  },
+  {
+    "question": "Determine the domain of the function: y = √(x² - 1) + ln x",
+    "variants": [
+      "x ∈ [1; +∞)",
+      "x ∈ (-∞; -1) ∪ (1; +∞)",
+      "x ∈ (-∞; -1) ∪ (1; x)",
+      "x ∈ (-∞; x)"
+    ],
+    "correct_answer": "x ∈ (-∞; -1) ∪ (1; +∞)"
+  },
+  {
+    "question": "Determine the domain of the function: y = √(x² - 1) + ln x",
+    "variants": [
+      "x ∈ [1; +∞)",
+      "x ∈ (-∞; -1) ∪ (1; +∞)",
+      "x ∈ (-∞; -1) ∪ (1; x)",
+      "x ∈ (-∞; x)"
+    ],
+    "correct_answer": "x ∈ (-∞; -1) ∪ (1; +∞)"
+  },
+  {
+    "question": "Find the limit of the function: lim (n→∞) (n+1)(n+2)(n+3) / n³",
+    "variants": [
+      "-1;",
+      "0;",
+      "3;",
+      "∞;"
+    ],
+    "correct_answer": "∞;"
+  },
+  {
+    "question": "Find the limit of the function: lim (n→∞) (3+5n-8n²) / (2-n+2n²)",
+    "variants": [
+      "∞;",
+      "3/2;",
+      "-5;",
+      "0;"
+    ],
+    "correct_answer": "∞;"
+  },
+  {
+    "question": "Find the limit of the function: lim (n→∞) (7n²+10n+20) / (n³-7n-10)",
+    "variants": [
+      "∞;",
+      "10;",
+      "1;",
+      "7;",
+      "0;"
+    ],
+    "correct_answer": "∞;"
+  },
+  {
+    "question": "Find the limit of the function: lim (n→∞) (n²-10) / n",
+    "variants": [
+      "∞;",
+      "10;",
+      "1;",
+      "-10;",
+      "0;"
+    ],
+    "correct_answer": "∞;"
+  },
+  {
+    "question": "Determine the domain of the function: y = √(x² - 1) + ln x",
+    "variants": [
+      "x ∈ [1; +∞)",
+      "x ∈ (-∞; -1) ∪ (1; +∞)",
+      "x ∈ (-∞; -1) ∪ (1; x)",
+      "x ∈ (-∞; x)"
+    ],
+    "correct_answer": "x ∈ (-∞; -1) ∪ (1; +∞)"
+  },
+  {
+    "question": "Find the limit of the function: lim (n→∞) (n√(n² + 4) - n)",
+    "variants": [
+      "∞;",
+      "2;",
+      "1;",
+      "-1;",
+      "0;"
+    ],
+    "correct_answer": "∞;"
+  },
+  {
+    "question": "Find the limit of the function: lim (n→∞) (2n+1)^(1/n)",
+    "variants": [
+      "∞;",
+      "e;",
+      "1;",
+      "0;",
+      "e^-3;"
+    ],
+    "correct_answer": "∞;"
+  },
+  {
+    "question": "Find the limit of the function: lim (n→∞) ((n+3)/(2n-1))^n",
+    "variants": [
+      "∞;",
+      "2;",
+      "1;",
+      "1/2;",
+      "0;"
+    ],
+    "correct_answer": "∞;"
+  },
+  {
+    "question": "Find the limit of the function: lim (n→∞) √(9 + 1/n)",
+    "variants": [
+      "3;",
+      "1;",
+      "-1;",
+      "2/3;",
+      "∞;"
+    ],
+    "correct_answer": "∞;"
+  },
+  {
+    "question": "Determine the domain of the function: y = √(x² - 1) + ln x",
+    "variants": [
+      "x ∈ [1; +∞)",
+      "x ∈ (-∞; -1) ∪ (1; +∞)",
+      "x ∈ (-∞; -1) ∪ (1; x)",
+      "x ∈ (-∞; x)"
+    ],
+    "correct_answer": "x ∈ (-∞; -1) ∪ (1; +∞)"
+  },
+  {
+    "question": "Find the limit of the function: lim x→∞ (3x² - 4x + 1) / (6x² - 2)",
+    "variants": [
+      "-1/2",
+      "1/2",
+      "0",
+      "∞",
+      "2"
+    ],
+    "correct_answer": "∞"
+  },
+  {
+    "question": "Find the limit of the function: lim x→∞ (3x² - 4x + 1) / (6x² - 2)",
+    "variants": [
+      "-1/2",
+      "1/2",
+      "0",
+      "∞",
+      "2"
+    ],
+    "correct_answer": "∞"
+  },
+  {
+    "question": "Find the limit of the function: lim x→∞ (5x - 1) / (1 - x²)",
+    "variants": [
+      "0",
+      "∞",
+      "-5",
+      "1",
+      "5"
+    ],
+    "correct_answer": "∞"
+  },
+  {
+    "question": "Find the limit of the function: lim x→0 (sin(5x)) / x",
+    "variants": [
+      "0",
+      "∞",
+      "1",
+      "-1"
+    ],
+    "correct_answer": "∞"
+  },
+  {
+    "question": "Find the limit of the function: lim (x→0) (tan(4x))/x",
+    "variants": [
+      "4",
+      "0",
+      "∞",
+      "1",
+      "-1"
+    ],
+    "correct_answer": "4"
+  },
+  {
+    "question": "Find the limit of the function: lim (x→0) (sin(8x))/x",
+    "variants": [
+      "8",
+      "0",
+      "∞",
+      "1",
+      "-1"
+    ],
+    "correct_answer": "8"
+  },
+  {
+    "question": "Find the limit of the function: lim (x→1) (1/(1-x) - 3/(1-x^3))",
+    "variants": [
+      "-1;",
+      "0;",
+      "-∞;",
+      "1;",
+      "3"
+    ],
+    "correct_answer": "-1;"
+  },
+  {
+    "question": "Find the limit of the function: lim (x→0) (x/(√(2+x) - √(2-x)))",
+    "variants": [
+      "√2;",
+      "2√2;",
+      "0;",
+      "∞;",
+      "2"
+    ],
+    "correct_answer": "2√2"
+  },
+  {
+    "question": "Determine the domain of the function: y = √(x² - 1) + ln x",
+    "variants": [
+      "x ∈ [1; +∞)",
+      "x ∈ (-∞; -1) ∪ (1; +∞)",
+      "x ∈ (-∞; -1) ∪ (1; x)",
+      "x ∈ (-∞; x)"
+    ],
+    "correct_answer": "x ∈ (-∞; -1) ∪ (1; +∞)"
+  },
+  {
+    "question": "Find the limit: lim x→0 sin 3x / sin x",
+    "variants": [
+      "1/3;",
+      "0;",
+      "3;",
+      "∞;",
+      "1"
+    ],
+    "correct_answer": "1"
+  },
+  {
+    "question": "Find the limit: lim x→∞ (x+3)^(x-2)",
+    "variants": [
+      "e-1;",
+      "e;",
+      "0;",
+      "∞;",
+      "1"
+    ],
+    "correct_answer": "e"
+  },
+  {
+    "question": "Find the limit: lim x→0 (e^x - e^-x - 2x) / (x - sin x)",
+    "variants": [
+      "0;",
+      "e;",
+      "1;",
+      "∞"
+    ],
+    "correct_answer": "1"
+  },
+  {
+    "question": "Find the limit: lim x→1 (x^m - 1) / (x - 1)",
+    "variants": [
+      "m;",
+      "-m;",
+      "1;",
+      "∞;",
+      "0;"
+    ],
+    "correct_answer": "m"
+  },
+  {
+    "question": "Determine the domain of the function: y = √(x² - 1) + ln x",
+    "variants": [
+      "x ∈ [1; +∞)",
+      "x ∈ (-∞; -1) ∪ (1; +∞)",
+      "x ∈ (-∞; -1) ∪ (1; x)",
+      "x ∈ (-∞; x)"
+    ],
+    "correct_answer": "x ∈ (-∞; -1) ∪ (1; +∞)"
+  },
+  {
+    "question": "Determine the domain of the function: y = √(x² - 1) + ln x",
+    "variants": [
+      "x ∈ [1; +∞)",
+      "x ∈ (-∞; -1) ∪ (1; +∞)",
+      "x ∈ (-∞; -1) ∪ (1; x)",
+      "x ∈ (-∞; x)"
+    ],
+    "correct_answer": "x ∈ (-∞; -1) ∪ (1; +∞)"
+  },
+  {
+    "question": "Determine the domain of the function: y = √(x² - 1) + ln x",
+    "variants": [
+      "x ∈ [1; +∞)",
+      "x ∈ (-∞; -1) ∪ (1; +∞)",
+      "x ∈ (-∞; -1) ∪ (1; x)",
+      "x ∈ (-∞; x)"
+    ],
+    "correct_answer": "x ∈ (-∞; -1) ∪ (1; +∞)"
+  },
+  {
+    "question": "Take derivative of the function: y = ln(x² - 1)",
+    "variants": [
+      "y' = 2x ln(x)",
+      "y' = 2x ln(x) - 1",
+      "y' = 2x ln(x) + 1",
+      "y' = 2x ln(x) - 2x"
+    ],
+    "correct_answer": "y' = 2x ln(x) - 2x"
+  },
+  {
+    "question": "Take derivative of the function: y = ln(cos x)",
+    "variants": [
+      "y' = -tan x",
+      "y' = -1",
+      "y' = 1",
+      "y' = -1 / cos x"
+    ],
+    "correct_answer": "y' = -1 / cos x"
+  },
+  {
+    "question": "Find y'(1) if y = ln(x² + 5)",
+    "variants": [
+      "1/3",
+      "2",
+      "1",
+      "0",
+      "3"
+    ],
+    "correct_answer": "1"
+  },
+  {
+    "question": "Determine the domain of the function: y = √(x² - 1) + ln x",
+    "variants": [
+      "x ∈ [1; +∞)",
+      "x ∈ (-∞; -1) ∪ (1; +∞)",
+      "x ∈ (-∞; -1) ∪ (1; x)",
+      "x ∈ (-∞; x)"
+    ],
+    "correct_answer": "x ∈ (-∞; -1) ∪ (1; +∞)"
+  },
+  {
+    "question": "If f(x) = x² - 4x + 3; f(a) = f(b); a < b, then",
+    "variants": [
+      "a < 2;",
+      "a > 2;",
+      "a > 3;",
+      "a < 1;",
+      "a > 1;"
+    ],
+    "correct_answer": "a < 2;"
+  },
+  {
+    "question": "Take second order derivative of the function: y = 4x³ + 5x² - 7x + 1",
+    "variants": [
+      "y'' = 24x + 10",
+      "y'' = 12x² + 10x - 7",
+      "y'' = 12x² + 10x",
+      "y'' = 24x² + 10"
+    ],
+    "correct_answer": "y'' = 12x² + 10x"
+  },
+  {
+    "question": "Take second order derivative of the function: y = sin x",
+    "variants": [
+      "y'' = -sin x",
+      "y'' = sin x",
+      "y'' = -cos x",
+      "y'' = cos x",
+      "y'' = arcsin x"
+    ],
+    "correct_answer": "y'' = -cos x"
+  },
+  {
+    "question": "Take derivative of the function: y = (sin x)³",
+    "variants": [
+      "y' = 3(sinx)² cos x",
+      "y' = 3(cos x)²",
+      "y' = 3(cos x)² sin x",
+      "y' = -3(sinx)² cos x",
+      "y' = 2ln x / x"
+    ],
+    "correct_answer": "y' = 3(cos x)² sin x"
+  },
+  {
+    "question": "Determine the domain of the function: y = √(x² - 1) + ln x",
+    "variants": [
+      "x ∈ [1; +∞)",
+      "x ∈ (-∞; -1) ∪ (1; +∞)",
+      "x ∈ (-∞; -1) ∪ (1; x)",
+      "x ∈ (-∞; x)"
+    ],
+    "correct_answer": "x ∈ (-∞; -1) ∪ (1; +∞)"
+  },
+  {
+    "question": "Take derivative of the function: y = √x",
+    "variants": [
+      "y' = 1/(2√x)",
+      "y' = 2/√x",
+      "y' = 2√x",
+      "y' = 1/√x",
+      "y' = √x/2"
+    ],
+    "correct_answer": "y' = 1/(2√x)"
+  },
+  {
+    "question": "Take derivative of the function: y = 4sin(6x - 1)",
+    "variants": [
+      "y' = 24cos(6x - 1)",
+      "y' = 4cos(6x - 1)",
+      "y' = -24cos(6x - 1)",
+      "y' = 6cos(6x - 1)",
+      "y' = 24sin(x - 6)"
+    ],
+    "correct_answer": "y' = 24cos(6x - 1)"
+  },
+  {
+    "question": "Take derivative of the function: y = 2^(3x + 2)",
+    "variants": [
+      "y' = 3·2^(3x + 2)·ln 2",
+      "y' = 2^(3x + 2)·ln 2",
+      "y' = 3·2^(3x + 2)"
+    ],
+    "correct_answer": "y' = 3·2^(3x + 2)·ln 2"
+  },
+  {
+    "question": "Determine the domain of the function: y = √(x² - 1) + ln x",
+    "variants": [
+      "x ∈ [1; +∞)",
+      "x ∈ (-∞; -1) ∪ (1; +∞)",
+      "x ∈ (-∞; -1) ∪ (1; x)",
+      "x ∈ (-∞; x)"
+    ],
+    "correct_answer": "x ∈ (-∞; -1) ∪ (1; +∞)"
+  },
+  {
+    "question": "Take derivative of the function: y = (5x² - 4x + 1)",
+    "variants": [
+      "y' = 3·(5x² - 4x + 1)²·(10x - 4)",
+      "y' = 3·(10x - 4)²",
+      "y' = 3·(5x² - 4x + 1)·(10x - 4)",
+      "y' = (10x - 4)"
+    ],
+    "correct_answer": "y' = 3·(5x² - 4x + 1)²·(10x - 4)"
+  },
+  {
+    "question": "f(x) = x³√(x³)",
+    "variants": [
+      "f'(x) = x + x³√(3x³)",
+      "f'(x) = x + x³√(3x³)",
+      "f'(x) = x + x³√(3x³)",
+      "f'(x) = x + x³√(3x³)"
+    ],
+    "correct_answer": "f'(x) = x + x³√(3x³)"
+  },
+  {
+    "question": "f(x) = tg²x + ln cos²x",
+    "variants": [
+      "f'(x) = 2tg'x",
+      "f'(x) = 3tg'x + 1/ cos²x",
+      "f'(x) = 1/ cos²x (2tgx - sin 2x)",
+      "f'(x) = 2tgx - sin 2x",
+      "f'(x) = 1/ sin²x (2tgx - sin 2x)"
+    ],
+    "correct_answer": "f'(x) = 1/ cos²x (2tgx - sin 2x)"
+  },
+  {
+    "question": "Determine the domain of the function: y = √(x² - 1) + ln x",
+    "variants": [
+      "x ∈ [1; +∞)",
+      "x ∈ (-∞; -1) ∪ (1; +∞)",
+      "x ∈ (-∞; -1) ∪ (1; x)",
+      "x ∈ (-∞; x)"
+    ],
+    "correct_answer": "x ∈ (-∞; -1) ∪ (1; +∞)"
+  },
+  {
+    "question": "Find the derivative of the function f(x) = (3x + 2)e^(-2x)",
+    "variants": [
+      "(3x + 3)e^(-2x)",
+      "3xe^(-2x)",
+      "- 6xe^(-2x)",
+      "(6x + 1)e^(-2x)"
+    ],
+    "correct_answer": "(3x + 3)e^(-2x)"
+  },
+  {
+    "question": "Find the derivative of the function f(x) = (5x - 3)/(2x - 3)",
+    "variants": [
+      "5/2",
+      "20x - 21/(2x - 3)^2",
+      "- 9/(2x - 3)^2"
+    ],
+    "correct_answer": "20x - 21/(2x - 3)^2"
+  },
+  {
+    "question": "Find the derivative of the function y = x³ sin 3x",
+    "variants": [
+      "y' = 3x² (sin 3x + x cos 3x)",
+      "y' = sin 3x + cos 3x;",
+      "y' = 3x² cos 3x;",
+      "y' = -3x² (cos 3x + x sin 3x)",
+      "y' = x³ (cos 3x + x sin 3x)"
+    ],
+    "correct_answer": "y' = 3x² (sin 3x + x cos 3x)"
+  },
+  {
+    "question": "Determine the domain of the function: y = √(x² - 1) + ln x",
+    "variants": [
+      "x ∈ [1; +∞)",
+      "x ∈ (-∞; -1) ∪ (1; +∞)",
+      "x ∈ (-∞; -1) ∪ (1; x)",
+      "x ∈ (-∞; x)"
+    ],
+    "correct_answer": "x ∈ (-∞; -1) ∪ (1; +∞)"
+  },
+  {
+    "question": "Find derivative of f(x) = ln sin x + 2x at the point x = π/3",
+    "variants": [
+      "2√3/3 + 2",
+      "2 - √3/3",
+      "√3/3",
+      "1/3 + 2"
+    ],
+    "correct_answer": "2√3/3 + 2"
+  },
+  {
+    "question": "Find derivative of f(x) = (2x² - 3x + 1)cos x at x = 0",
+    "variants": [
+      "0;",
+      "-3;",
+      "2π;",
+      "3;",
+      "-6;"
+    ],
+    "correct_answer": "0;"
+  },
+  {
+    "question": "Find derivative of y = ln(e⁻x + xe⁻x)",
+    "variants": [
+      "y' = -x/(1 + x)",
+      "y' = -x²/(1 + x)",
+      "y' = x/(1 + x)",
+      "y' = -x/(1 + x)²",
+      "y' = e⁻x + xe⁻x"
+    ],
+    "correct_answer": "y' = -x/(1 + x)"
+  },
+  {
+    "question": "Find the interval where the function is increasing: \\( y = \\frac{x^3}{3} + x^2 - 3x + 5 \\)",
+    "variants": [
+      "y ∈ (-∞; -3) ∪ (1; ∞)",
+      "y ∈ (-∞; -1) ∪ (1; ∞)",
+      "y ∈ (-∞; -1) ∪ (1; ∞)",
+      "y ∈ (-∞; -1) ∪ (1; ∞)"
+    ],
+    "correct_answer": "y ∈ (-∞; -1) ∪ (1; ∞)"
+  },
+  {
+    "question": "Find the interval where the function is decreasing: \\( y = \\frac{x^3}{3} - 2x^2 + 3x - 9 \\)",
+    "variants": [
+      "y ∈ (1; 3)",
+      "y ∈ (-∞; 1) ∪ (3; ∞)",
+      "y ∈ (-∞; 3)",
+      "y ∈ (-∞; 3)",
+      "y ∈ (1; ∞)"
+    ],
+    "correct_answer": "y ∈ (-∞; 3)"
+  },
+  {
+    "question": "Find the interval where the function is increasing: \\( y = x^3 + x^2 - 3x \\)",
+    "variants": [
+      "(-∞; -1) ∪ (3; ∞)",
+      "(-∞; +∞)",
+      "(3; +∞)",
+      "(-1; 3)",
+      "(-∞; -3)"
+    ],
+    "correct_answer": "(-∞; -1) ∪ (3; ∞)"
+  },
+  {
+    "question": "Find the interval where the function is increasing: \\( y = 2x^2 - \\ln x \\)",
+    "variants": [
+      "(0; 0.5)",
+      "(0.5; +∞)",
+      "(-∞; 0)",
+      "(0; +∞)"
+    ],
+    "correct_answer": "(0; +∞)"
+  },
+  {
+    "question": "Find the interval where the function is decreasing",
+    "variants": [
+      "(0; 0,5)",
+      "(0,5; +∞)",
+      "(-∞; 0)",
+      "(0; +∞)",
+      "(-∞; 0,5)"
+    ],
+    "correct_answer": "(0; 0,5)"
+  },
+  {
+    "question": "Find the interval where the function is decreasing",
+    "variants": [
+      "(0; 2)",
+      "(-∞; 0) ∪ (2; +∞)",
+      "(-∞; 0)",
+      "(0; +∞)",
+      "(0; e^-2)"
+    ],
+    "correct_answer": "(0; 2)"
+  },
+  {
+    "question": "Find the interval where the function is decreasing",
+    "variants": [
+      "increasing on (0, 2)",
+      "decreasing on (0, 2)",
+      "increasing on (-∞, 2)",
+      "increasing on (-∞, 0)",
+      "decreasing on (0, 1)"
+    ],
+    "correct_answer": "decreasing on (0, 2)"
+  },
+  {
+    "question": "Find the interval where the function is decreasing",
+    "variants": [
+      "y_min = 1, y_max = 4e^-2;",
+      "y_min = 0, y_max = 4e^-2;",
+      "y_min = 0, y_max = 4e^-2;"
+    ],
+    "correct_answer": "y_min = 0, y_max = 4e^-2;"
+  },
+  {
+    "question": "Find the interval where the function is decreasing",
+    "variants": [
+      "y_min = 0, y_max = 0,5;",
+      "y_min doesn't exist, y_max = 0,5;",
+      "y_min = 1/2 + ln 2, y_max doesn't exist;",
+      "y_min = 0, y_max = 2;",
+      "y_min = 1/2 + ln 2, y_max doesn't exist;"
+    ],
+    "correct_answer": "y_min = 1/2 + ln 2, y_max doesn't exist;"
+  },
+  {
+    "question": "Determine the domain of the function: y = √(x² - 1) + ln x",
+    "variants": [
+      "x ∈ [1; +∞)",
+      "x ∈ (-∞; -1) ∪ (1; +∞)",
+      "x ∈ (-∞; -1) ∪ (1; x)",
+      "x ∈ (-∞; x)"
+    ],
+    "correct_answer": "x ∈ (-∞; -1) ∪ (1; +∞)"
+  },
+  {
+    "question": "Find the extreme points of the function : y = x³ - 6x + 8",
+    "variants": [
+      "y(3) - min",
+      "y(3) - max"
+    ],
+    "correct_answer": "y(3) - min"
+  },
+  {
+    "question": "Find the interval where the function is concave up: y = x³ - 6x + 8",
+    "variants": [
+      "x ∈ (-∞; -1)",
+      "x ∈ (1; ∞)",
+      "x ∈ (-1; 0)",
+      "x ∈ (0; 1)"
+    ],
+    "correct_answer": "x ∈ (-∞; -1)"
+  },
+  {
+    "question": "Find the interval where the function is convex: y = x³ - 6x + 8",
+    "variants": [
+      "x ∈ (-∞; -1)",
+      "x ∈ (1; ∞)",
+      "x ∈ (-1; 0)",
+      "x ∈ (0; 1)"
+    ],
+    "correct_answer": "x ∈ (1; ∞)"
+  },
+  {
+    "question": "Determine the domain of the function: y = √(x² - 1) + ln x",
+    "variants": [
+      "x ∈ [1; +∞)",
+      "x ∈ (-∞; -1) ∪ (1; +∞)",
+      "x ∈ (-∞; -1) ∪ (1; x)",
+      "x ∈ (-∞; x)"
+    ],
+    "correct_answer": "x ∈ (-∞; -1) ∪ (1; +∞)"
+  },
+  {
+    "question": "Find the points of inflection of the function: y = x³/3 - 2x² + 3x - 9",
+    "variants": [
+      "y(-1) and y(1)",
+      "y(-3)",
+      "y(-3) and y(1)"
+    ],
+    "correct_answer": "y(-1) and y(1)"
+  },
+  {
+    "question": "Find the interval where the function is concave up: y = x³/3 - 2x² + 3x - 9",
+    "variants": [
+      "x ∈ (2;∞)",
+      "x ∈ (-∞; -2)",
+      "x ∈ (-∞; 2)",
+      "x ∈ (-2;∞)",
+      "x ∈ (-∞; -2)"
+    ],
+    "correct_answer": "x ∈ (-∞; -2)"
+  },
+  {
+    "question": "Find the interval where the function is convex: y = x³/3 - 2x² + 3x - 9",
+    "variants": [
+      "x ∈ (-∞; 2)",
+      "x ∈ (2;∞)",
+      "x ∈ (-2;∞)",
+      "x ∈ (-2;2)",
+      "x ∈ (-∞; -2)"
+    ],
+    "correct_answer": "x ∈ (-2;2)"
+  },
+  {
+    "question": "Find the points of inflection of the function: y = x³/3 - 2x² + 3x - 9",
+    "variants": [
+      "y(2)",
+      "y(-2)"
+    ],
+    "correct_answer": "y(-2)"
+  },
+  {
+    "question": "Determine the domain of the function: y = √(x² - 1) + ln x",
+    "variants": [
+      "x ∈ [1; +∞)",
+      "x ∈ (-∞; -1) ∪ (1; +∞)",
+      "x ∈ (-∞; -1) ∪ (1; x)",
+      "x ∈ (-∞; x)"
+    ],
+    "correct_answer": "x ∈ (-∞; -1) ∪ (1; +∞)"
+  },
+  {
+    "question": "Find the equations of the vertical asymptotes of the function: \\( y = \\frac{2-x}{x^2-9} \\)",
+    "variants": [
+      "x = -3 and x=3",
+      "x = 2",
+      "x = 2/9",
+      "y = -3 and y=3",
+      "y = 2x-3"
+    ],
+    "correct_answer": "x = -3 and x=3"
+  },
+  {
+    "question": "Find the equations of the vertical asymptotes of the function: \\( y = \\frac{x+4}{x^2-25} \\)",
+    "variants": [
+      "x = -5 and x=5",
+      "x = -4",
+      "x = -4/25",
+      "y = -5 and y=5",
+      "y = -4x+5"
+    ],
+    "correct_answer": "x = -5 and x=5"
+  },
+  {
+    "question": "Find the equations of the horizontal asymptotes of the function: \\( y = \\frac{2x^2-x}{x^2-9} \\)",
+    "variants": [
+      "y=2",
+      "x=2",
+      "y=2/9",
+      "y = -3 and y=3",
+      "y = 2x-3"
+    ],
+    "correct_answer": "y=2"
+  },
+  {
+    "question": "Find the equations of the horizontal asymptotes of the function: \\( y = \\frac{3x^2+4}{x^2-25} \\)",
+    "variants": [
+      "y=3",
+      "x=3",
+      "y = -4/25",
+      "y = -5 and y=5",
+      "y = -4x+5"
+    ],
+    "correct_answer": "y=3"
+  },
+  {
+    "question": "Determine the domain of the function: y = √(x² - 1) + ln x",
+    "variants": [
+      "x ∈ [1; +∞)",
+      "x ∈ (-∞; -1) ∪ (1; +∞)",
+      "x ∈ (-∞; -1) ∪ (1; x)",
+      "x ∈ (-∞; x)"
+    ],
+    "correct_answer": "x ∈ (-∞; -1) ∪ (1; +∞)"
+  },
+  {
+    "question": "Determine the domain of the function: y = √(x² - 1) + ln x",
+    "variants": [
+      "x ∈ [1; +∞)",
+      "x ∈ (-∞; -1) ∪ (1; +∞)",
+      "x ∈ (-∞; -1) ∪ (1; x)",
+      "x ∈ (-∞; x)"
+    ],
+    "correct_answer": "x ∈ (-∞; -1) ∪ (1; +∞)"
+  },
+  {
+    "question": "Take differential of the function: y = ln(3x² - x)",
+    "variants": [
+      "dy = (6x - 1) / (3x² - x) dx",
+      "dy = 6x - 1 / (3x² - x) dx",
+      "dy = 1 / (3x² - x) dx",
+      "dy = 3x² - x / (6x - 1) dx"
+    ],
+    "correct_answer": "dy = (6x - 1) / (3x² - x) dx"
+  },
+  {
+    "question": "Take differential of the function: y = √(3x + 5)",
+    "variants": [
+      "dy = 3 / (2√(3x + 5)) dx",
+      "dy = 3 / (2√(3x + 5)) dx",
+      "dy = √(3x + 5) / (3x + 5) dx",
+      "dy = 3 / √(3x + 5) dx"
+    ],
+    "correct_answer": "dy = 3 / (2√(3x + 5)) dx"
+  },
+  {
+    "question": "Take differential of the function: y = 3^(sinx)",
+    "variants": [
+      "dy = 3^(sinx) * cosx * ln3 * dx",
+      "dy = 3^(sinx) * cosx * ln3 * dx",
+      "dy = 3^(sinx) * cosx * ln3 * dx"
+    ],
+    "correct_answer": "dy = 3^(sinx) * cosx * ln3 * dx"
+  },
+  {
+    "question": "Determine the domain of the function: y = √(x² - 1) + ln x",
+    "variants": [
+      "x ∈ [1; +∞)",
+      "x ∈ (-∞; -1) ∪ (1; +∞)",
+      "x ∈ (-∞; -1) ∪ (1; x)",
+      "x ∈ (-∞; x)"
+    ],
+    "correct_answer": "x ∈ (-∞; -1) ∪ (1; +∞)"
+  },
+  {
+    "question": "Take differential of the function: y = 5^cosx",
+    "variants": [
+      "dy = 5^cosx * (-sin x) * dx",
+      "dy = 5^cosx * cos x * dx",
+      "dy = 5^cosx * ln 5 * dx",
+      "dy = 5^cosx * sin x * dx"
+    ],
+    "correct_answer": "dy = 5^cosx * (-sin x) * dx"
+  },
+  {
+    "question": "Take differential of the function: y = tan(√x)",
+    "variants": [
+      "dy = 1 / (2√x * cos²(√x)) * dx",
+      "dy = 1 / (2√x * cos²(√x)) * dx",
+      "dy = 1 / cos²(√x) * dx",
+      "dy = 1 / cos²(1 / 2√x) * dx",
+      "dy = 2 / cos²(1 / 2√x) * dx"
+    ],
+    "correct_answer": "dy = 1 / (2√x * cos²(√x)) * dx"
+  },
+  {
+    "question": "Take differential of the function: y = ln(√x)",
+    "variants": [
+      "dy = 1 / 2√x * dx",
+      "dy = 1 / 2√x * dx",
+      "dy = 1 / 2ln x * dx",
+      "dy = 1 / 2ln x * dx",
+      "dy = 1 / 2ln x * √x * dx"
+    ],
+    "correct_answer": "dy = 1 / 2√x * dx"
+  },
+  {
+    "question": "Determine the domain of the function: y = √(x² - 1) + ln x",
+    "variants": [
+      "x ∈ [1; +∞)",
+      "x ∈ (-∞; -1) ∪ (1; +∞)",
+      "x ∈ (-∞; -1) ∪ (1; x)",
+      "x ∈ (-∞; x)"
+    ],
+    "correct_answer": "x ∈ (-∞; -1) ∪ (1; +∞)"
+  },
+  {
+    "question": "Find the derivative of the function: y = 3^(x²)",
+    "variants": [
+      "y' = 3^(x²) ln 3",
+      "y' = 3^(x²) 2x ln 3",
+      "y' = 3^(x²) 3x² ln 3",
+      "y' = 3^(x²) 2x ln 3"
+    ],
+    "correct_answer": "y' = 3^(x²) 2x ln 3"
+  },
+  {
+    "question": "Evaluate the indefinite integral: ∫ sin(3x + 4) dx",
+    "variants": [
+      "-1/3 cos(3x + 4) + C",
+      "-1/3 sin(3x + 4) + C",
+      "-1/3 cos(x) + C"
+    ],
+    "correct_answer": "-1/3 cos(3x + 4) + C"
+  },
+  {
+    "question": "Evaluate the indefinite integral: ∫ (x / (1 + x²)) dx",
+    "variants": [
+      "1/2 ln(1 + x²) + C",
+      "arctan(x) + C",
+      "ln(1 + x) + C",
+      "e^(x²) + C"
+    ],
+    "correct_answer": "1/2 ln(1 + x²) + C"
+  },
+  {
+    "question": "Evaluate the indefinite integral: ∫(1/x^3)dx",
+    "variants": [
+      "-1/(2x^2) + C",
+      "-1/(3x^2) + C",
+      "-1/x + C",
+      "-x^2/x^3 + C",
+      "ln(x) + C"
+    ],
+    "correct_answer": "-1/(2x^2) + C"
+  },
+  {
+    "question": "Evaluate the indefinite integral: ∫(tan x)dx",
+    "variants": [
+      "-ln|cos x| + C",
+      "ln|sin x| + C",
+      "|cos x| + C",
+      "1/(cos^2 x) + C",
+      "sin|cos x| + C"
+    ],
+    "correct_answer": "-ln|cos x| + C"
+  },
+  {
+    "question": "Evaluate the indefinite integral: ∫(e^(x+1))dx",
+    "variants": [
+      "1/4 e^(x+1) + C",
+      "e^(x+1) + C",
+      "4e^(x+1) + C",
+      "(4x-1)e^(x+1) + C",
+      "4xe^(x+1) + C"
+    ],
+    "correct_answer": "1/4 e^(x+1) + C"
+  },
+  {
+    "question": "Evaluate the indefinite integral: ∫(2^(x+4))dx",
+    "variants": [
+      "1/5 2^(x+4)/ln 2 + C",
+      "2^(x+4)/ln 2 + C",
+      "5 2^(x+4)/ln 2 + C"
+    ],
+    "correct_answer": "1/5 2^(x+4)/ln 2 + C"
+  },
+  {
+    "question": "Evaluate the indefinite integral: ∫ 3^(4x-1) dx",
+    "variants": [
+      "1/4 * 3^(4x-1) + C",
+      "3^(4x-1) + C",
+      "4 * 3^(4x-1) + C",
+      "(4x-1) * 3^(4x-1) + C",
+      "4x * 3^(4x-1) + C"
+    ],
+    "correct_answer": "1/4 * 3^(4x-1) + C"
+  },
+  {
+    "question": "Evaluate the indefinite integral: ∫ ln²(x) / x dx",
+    "variants": [
+      "ln(x) / 4 + C",
+      "ln(x) / x + C",
+      "3ln²(x) + C",
+      "ln³(x) / 3 + C",
+      "ln⁴(x) / 4x + C"
+    ],
+    "correct_answer": "ln(x) / 4 + C"
+  },
+  {
+    "question": "Evaluate the indefinite integral: ∫ ln²(x) / x dx",
+    "variants": [
+      "ln(x) / 4 + C",
+      "ln(x) / x + C",
+      "3ln²(x) + C",
+      "ln³(x) / 3 + C",
+      "ln⁴(x) / 4x + C"
+    ],
+    "correct_answer": "ln(x) / 4 + C"
+  },
+  {
+    "question": "Determine the domain of the function: y = √(x² - 1) + ln x",
+    "variants": [
+      "x ∈ [1; +∞)",
+      "x ∈ (-∞; -1) ∪ (1; +∞)",
+      "x ∈ (-∞; -1) ∪ (1; x)",
+      "x ∈ (-∞; x)"
+    ],
+    "correct_answer": "x ∈ (-∞; -1) ∪ (1; +∞)"
+  },
+  {
+    "question": "Take the indefinite integral: ∫ (sin x) / (cos² x) dx",
+    "variants": [
+      "1 / cos x + C",
+      "-1 / cos x + C",
+      "1 / sin x + C",
+      "1 / cos² x + C",
+      "1 / cos² x + C"
+    ],
+    "correct_answer": "1 / cos x + C"
+  },
+  {
+    "question": "Take the indefinite integral: ∫ 3^(sin x) dx",
+    "variants": [
+      "3^(sin x) / ln 3 + C",
+      "3^(sin x) + C",
+      "3^(cos x) / ln 3 + C",
+      "3^(cos x) + C",
+      "3^(sin x) / cos x + C"
+    ],
+    "correct_answer": "3^(sin x) / ln 3 + C"
+  },
+  {
+    "question": "Take the indefinite integral: ∫ (sin(ln x)) / x dx",
+    "variants": [
+      "cos(ln x) + C",
+      "-1 / cos x + C",
+      "ln(sin x) + C",
+      "tan x + C",
+      "ln(cos x) + C"
+    ],
+    "correct_answer": "cos(ln x) + C"
+  },
+  {
+    "question": "Determine the domain of the function: y = √(x² - 1) + ln x",
+    "variants": [
+      "x ∈ [1; +∞)",
+      "x ∈ (-∞; -1) ∪ (1; +∞)",
+      "x ∈ (-∞; -1) ∪ (1; x)",
+      "x ∈ (-∞; x)"
+    ],
+    "correct_answer": "x ∈ (-∞; -1) ∪ (1; +∞)"
+  },
+  {
+    "question": "Take the indefinite integral: ∫e^(sin x) · cos x dx",
+    "variants": [
+      "e^(sin x) + C",
+      "e^(cos x) + C",
+      "-e^(sin x) + C",
+      "e^(cos x) · sin x + C",
+      "e^(cos x) / sin x + C"
+    ],
+    "correct_answer": "e^(cos x) · sin x + C"
+  },
+  {
+    "question": "Take the indefinite integral: ∫sin(3x² + 7) · x dx",
+    "variants": [
+      "-1/6 cos(3x² + 7) + C",
+      "cos(3x² + 7) + C",
+      "-1/6 sin(3x² + 7) + C",
+      "6 cos(3x² + 7) + C",
+      "cos(6x + 7) · x² + C"
+    ],
+    "correct_answer": "6 cos(3x² + 7) + C"
+  },
+  {
+    "question": "Take the indefinite integral: ∫cos(5x² - 3) · x dx",
+    "variants": [
+      "1/10 sin(5x² - 3) + C",
+      "-sin(5x² - 3) + C",
+      "1/10 cos(5x² - 3) + C",
+      "sin(10x - 3) + C",
+      "sin(5x² - 3) · x² + C"
+    ],
+    "correct_answer": "1/10 cos(5x² - 3) + C"
+  },
+  {
+    "question": "Take the indefinite integral: ∫3^(4x² - 1) · x dx",
+    "variants": [
+      "1/8 3^(4x² - 1) + C",
+      "3^(4x² + 1) / ln 3 + C",
+      "1/8 3^(4x² - 1) + C"
+    ],
+    "correct_answer": "3^(4x² + 1) / ln 3 + C"
+  },
+  {
+    "question": "Find the indefinite integral: ∫(tan^2 x) dx",
+    "variants": [
+      "\\\frac{tan^3 x}{3} + C",
+      "\\\frac{tan^3 x}{cos^2 x} + C",
+      "\\\frac{tan x}{3} + C",
+      "\\\frac{1}{tan x} + C",
+      "\\\frac{cos^2 x}{tan^3 x} + C"
+    ],
+    "correct_answer": "\\\frac{tan^3 x}{3} + C"
+  },
+  {
+    "question": "Find the indefinite integral: ∫(ctg^2 x) dx",
+    "variants": [
+      "-\\\frac{ctg^3 x}{3} + C",
+      "\\\frac{tan^3 x}{sin^2 x} + C",
+      "\\\frac{ctgx}{3} + C",
+      "\\\frac{1}{ctgx} + C",
+      "\\\frac{sin^3 x}{ctgx} + C"
+    ],
+    "correct_answer": "-\\\frac{ctg^3 x}{3} + C"
+  },
+  {
+    "question": "Find the indefinite integral: ∫(tan^2 x) dx",
+    "variants": [
+      "\\\frac{tan^3 x}{3} + C",
+      "\\\frac{tan^3 x}{cos^2 x} + C",
+      "\\\frac{tan x}{3} + C",
+      "\\\frac{1}{tan x} + C",
+      "\\\frac{cos^2 x}{tan^3 x} + C"
+    ],
+    "correct_answer": "\\\frac{tan^3 x}{3} + C"
+  },
+  {
+    "question": "Determine the domain of the function: y = √(x² - 1) + ln x",
+    "variants": [
+      "x ∈ [1; +∞)",
+      "x ∈ (-∞; -1) ∪ (1; +∞)",
+      "x ∈ (-∞; -1) ∪ (1; x)",
+      "x ∈ (-∞; x)"
+    ],
+    "correct_answer": "x ∈ (-∞; -1) ∪ (1; +∞)"
+  },
+  {
+    "question": "What property of indefinite integrals is wrong?",
+    "variants": [
+      "∫(f+g) dx = ∫f dx + ∫g dx",
+      "∫(f-g) dx = ∫f dx - ∫g dx",
+      "∫C · f(x) dx = C · ∫f(x) dx",
+      "∫f(ax+b) dx = 1/a · F(ax+b) + C  if F'(x) = f(x)"
+    ],
+    "correct_answer": "∫(f+g) dx = ∫f dx + ∫g dx"
+  },
+  {
+    "question": "What property of indefinite integrals is wrong?",
+    "variants": [
+      "∫(f/g) dx = ∫f dx / ∫g dx",
+      "∫(f+g) dx = ∫f dx + ∫g dx",
+      "∫(f-g) dx = ∫f dx - ∫g dx",
+      "∫C · f(x) dx = C · ∫f(x) dx",
+      "∫f(ax+b) dx = 1/a · F(ax+b) + C  if F'(x) = f(x)"
+    ],
+    "correct_answer": "∫(f/g) dx = ∫f dx / ∫g dx"
+  },
+  {
+    "question": "Evaluate definite integral: ∫₀¹ (x² + 3) dx",
+    "variants": [
+      "10/3",
+      "4/3",
+      "0",
+      "1",
+      "-5/3"
+    ],
+    "correct_answer": "10/3"
+  },
+  {
+    "question": "Evaluate definite integral: ∫₀² x² dx",
+    "variants": [
+      "2/3",
+      "0",
+      "1",
+      "2",
+      "-1"
+    ],
+    "correct_answer": "2/3"
+  },
+  {
+    "question": "Evaluate definite integral: ∫₀² cos x dx",
+    "variants": [
+      "1",
+      "0",
+      "π/2",
+      "π",
+      "1/2"
+    ],
+    "correct_answer": "1"
+  },
+  {
+    "question": "Evaluate definite integral: ∫₀² sin x dx",
+    "variants": [
+      "1",
+      "0",
+      "π/2",
+      "π",
+      "1/2"
+    ],
+    "correct_answer": "0"
+  },
+  {
+    "question": "Evaluate definite integral: ∫₀² (x+1) dx",
+    "variants": [
+      "4",
+      "2",
+      "0",
+      "1",
+      "1/2"
+    ],
+    "correct_answer": "4"
+  },
+  {
+    "question": "Find the area of the region enclosed by the curves y = f(x) and y = g(x) from x = a to x = b.",
+    "variants": [
+      "\\int_{a}^{b} (g(x) - f(x)) dx",
+      "\\int_{a}^{b} (f(x) - g(x)) dx",
+      "\\int_{b}^{a} (g(x) - f(x)) dx",
+      "\\int_{a}^{b} f(x) dx",
+      "\\int_{a}^{b} (g(x) + f(x)) dx"
+    ],
+    "correct_answer": "\\int_{a}^{b} (g(x) - f(x)) dx"
+  },
+  {
+    "question": "The formula that connects definite and indefinite integrals is (Fundamental theorem):",
+    "variants": [
+      "\\int_{a}^{b} f(x) dx = F(b) - F(a)",
+      "\\int_{a}^{b} f(x) dx = F(x) + C",
+      "\\int_{a}^{b} f(x) dx = f(b) - f(a)",
+      "\\int_{a}^{b} f(x) dx = F(x) - F(a)"
+    ],
+    "correct_answer": "\\int_{a}^{b} f(x) dx = F(b) - F(a)"
+  },
+  {
+    "question": "Find the area bounded between two curves: 32/3",
+    "variants": [
+      "32/3",
+      "2.9",
+      "4/3",
+      "1",
+      "1/2"
+    ],
+    "correct_answer": "32/3"
+  },
+  {
+    "question": "Find the area bounded between two curves: 2.9",
+    "variants": [
+      "32/3",
+      "2.9",
+      "4/3",
+      "1",
+      "1/2"
+    ],
+    "correct_answer": "2.9"
+  },
+  {
+    "question": "Find the area bounded between two curves: 4/3",
+    "variants": [
+      "32/3",
+      "2.9",
+      "4/3",
+      "1",
+      "1/2"
+    ],
+    "correct_answer": "4/3"
+  },
+  {
+    "question": "Find the area bounded between two curves: 1",
+    "variants": [
+      "32/3",
+      "2.9",
+      "4/3",
+      "1",
+      "1/2"
+    ],
+    "correct_answer": "1"
+  },
+  {
+    "question": "Find the area bounded between two curves: 1/2",
+    "variants": [
+      "32/3",
+      "2.9",
+      "4/3",
+      "1",
+      "1/2"
+    ],
+    "correct_answer": "1/2"
+  },
+  {
+    "question": "Find the area bounded between two curves: 36",
+    "variants": [
+      "32/3",
+      "2.9",
+      "4/3",
+      "1",
+      "1/2"
+    ],
+    "correct_answer": "36"
+  },
+  {
+    "question": "Find the area bounded between two curves: 3",
+    "variants": [
+      "32/3",
+      "2.9",
+      "4/3",
+      "1",
+      "1/2"
+    ],
+    "correct_answer": "3"
+  },
+  {
+    "question": "Find the area bounded between two curves: 52",
+    "variants": [
+      "32/3",
+      "2.9",
+      "4/3",
+      "1",
+      "1/2"
+    ],
+    "correct_answer": "52"
+  },
+  {
+    "question": "Find the area bounded between two curves: -36",
+    "variants": [
+      "32/3",
+      "2.9",
+      "4/3",
+      "1",
+      "1/2"
+    ],
+    "correct_answer": "-36"
+  },
+  {
+    "question": "Find the area bounded between two curves: 1",
+    "variants": [
+      "32/3",
+      "2.9",
+      "4/3",
+      "1",
+      "1/2"
+    ],
+    "correct_answer": "1"
+  },
+  {
+    "question": "Find the area bounded between two curves: 17/5",
+    "variants": [
+      "32/3",
+      "2.9",
+      "4/3",
+      "1",
+      "1/2"
+    ],
+    "correct_answer": "17/5"
+  },
+  {
+    "question": "Find the area bounded between two curves: 2/5",
+    "variants": [
+      "32/3",
+      "2.9",
+      "4/3",
+      "1",
+      "1/2"
+    ],
+    "correct_answer": "2/5"
+  },
+  {
+    "question": "Find the area bounded between two curves: 1",
+    "variants": [
+      "32/3",
+      "2.9",
+      "4/3",
+      "1",
+      "1/2"
+    ],
+    "correct_answer": "1"
+  },
+  {
+    "question": "Find the area bounded between two curves: 8/3",
+    "variants": [
+      "32/3",
+      "2.9",
+      "4/3",
+      "1",
+      "1/2"
+    ],
+    "correct_answer": "8/3"
+  },
+  {
+    "question": "Find the area bounded between two curves: 25/2",
+    "variants": [
+      "32/3",
+      "2.9",
+      "4/3",
+      "1",
+      "1/2"
+    ],
+    "correct_answer": "25/2"
+  },
+  {
+    "question": "Find the area bounded between two curves: 12",
+    "variants": [
+      "32/3",
+      "2.9",
+      "4/3",
+      "1",
+      "1/2"
+    ],
+    "correct_answer": "12"
+  },
+  {
+    "question": "Find the area bounded between two curves: 1/3",
+    "variants": [
+      "32/3",
+      "2.9",
+      "4/3",
+      "1",
+      "1/2"
+    ],
+    "correct_answer": "1/3"
+  },
+  {
+    "question": "Find the area bounded between two curves: 1",
+    "variants": [
+      "32/3",
+      "2.9",
+      "4/3",
+      "1",
+      "1/2"
+    ],
+    "correct_answer": "1"
+  },
+  {
+    "question": "Find the area bounded between two curves: 156. Find the area bounded between two curves: 157. Find the area bounded between two curves: 158. Find the area bounded between two curves: 159. Find the partial derivative z_x of the function of two variables: z(x, y) = x^2 y + 2x - 4y",
+    "variants": [
+      "9/2",
+      "25/2",
+      "12",
+      "1/3",
+      "1"
+    ],
+    "correct_answer": "9/2"
+  },
+  {
+    "question": "Find the area bounded between two curves: 157. Find the area bounded between two curves: 158. Find the area bounded between two curves: 159. Find the partial derivative z_x of the function of two variables: z(x, y) = x^2 y + 2x - 4y",
+    "variants": [
+      "125/3",
+      "25/2",
+      "12",
+      "1/3",
+      "1"
+    ],
+    "correct_answer": "125/3"
+  },
+  {
+    "question": "Find the area bounded between two curves: 158. Find the area bounded between two curves: 159. Find the partial derivative z_x of the function of two variables: z(x, y) = x^2 y + 2x - 4y",
+    "variants": [
+      "256/3",
+      "25/2",
+      "12",
+      "1/3",
+      "1"
+    ],
+    "correct_answer": "256/3"
+  },
+  {
+    "question": "Find the area bounded between two curves: 159. Find the partial derivative z_x of the function of two variables: z(x, y) = x^2 y + 2x - 4y",
+    "variants": [
+      "2xy + 2",
+      "x^2 - 4",
+      "2xy + 2 - 4y",
+      "2xy",
+      "2xy + 2x - 4"
+    ],
+    "correct_answer": "2xy + 2"
+  },
+  {
+    "question": "Find the partial derivative z_y of the function of two variables: z(x, y) = x^2 y + 2x - 4y",
+    "variants": [
+      "x^2 - 4",
+      "2xy + 2",
+      "2xy + 2 - 4y",
+      "2xy",
+      "2xy"
+    ],
+    "correct_answer": "x^2 - 4"
+  },
+  {
+    "question": "Find the partial derivative z_x of the function z(x, y) = x^2 sin y",
+    "variants": [
+      "z_x = 2x sin y",
+      "z_x = x^2 cos y",
+      "z_x = 2x cos y",
+      "z_x = 2xy cos y",
+      "z_x = 2x sin y + x^2 cos y"
+    ],
+    "correct_answer": "z_x = 2x sin y"
+  },
+  {
+    "question": "Find the partial derivative z_y of the function z(x, y) = x^2 sin y",
+    "variants": [
+      "z_y = x^2 cos y",
+      "z_y = 2x sin y",
+      "z_y = 2x cos y",
+      "z_y = 2xy cos y",
+      "z_y = 2x sin y + x^2 cos y"
+    ],
+    "correct_answer": "z_y = x^2 cos y"
+  },
+  {
+    "question": "Find the partial derivative z_x of the function z(x, y) = x^3 cos y",
+    "variants": [
+      "z_x = 3x^2 cos y",
+      "z_x = -x^3 sin y",
+      "z_x = 3x^2 cos y - x^3 sin y"
+    ],
+    "correct_answer": "z_x = 3x^2 cos y"
+  },
+  {
+    "question": "Find the partial derivative z_y of the function z(x, y) = x^3 cos y",
+    "variants": [
+      "z_y = -x^3 sin y",
+      "z_y = 3x^2 cos y",
+      "z_y = 2x cos y",
+      "z_y = 2xy cos y",
+      "z_y = 2x sin y + x^2 cos y"
+    ],
+    "correct_answer": "z_y = 3x^2 cos y"
+  },
+  {
+    "question": "Find the partial derivative z_x of the function z(x, y) = x^2 ln y",
+    "variants": [
+      "z_x = x^2 / y",
+      "z_x = 2x / y",
+      "z_x = 2x ln y + x^2 / y",
+      "z_x = 2x + 1 / y"
+    ],
+    "correct_answer": "z_x = 2x / y"
+  },
+  {
+    "question": "Find the partial derivative z_y of the function z(x, y) = x^2 ln y",
+    "variants": [
+      "z_y = x^2 / y",
+      "z_y = 2x ln y",
+      "z_y = 2x",
+      "z_y = 2xy - 2x^2 ln y",
+      "z_y = 2x + 1 / y"
+    ],
+    "correct_answer": "z_y = 2x ln y"
+  },
+  {
+    "question": "Find the partial derivative z_x of the function z(x, y) = sin x + ln y",
+    "variants": [
+      "z_x = cos x",
+      "z_x = 1 / y",
+      "z_x = cos x + 1 / y",
+      "z_x = sin x + 1 / y",
+      "z_x = cos x + ln y"
+    ],
+    "correct_answer": "z_x = cos x"
+  },
+  {
+    "question": "Find the partial derivative z_y of the function z(x, y) = sin x + ln y",
+    "variants": [
+      "z_y = cos x + 1/y",
+      "z_y = sin x + 1/y",
+      "z_y = cos x + ln y",
+      "z_y = cos x + 3y^2"
+    ],
+    "correct_answer": "z_y = cos x + 1/y"
+  },
+  {
+    "question": "Find the partial derivative z_x of the function z(x, y) = x^3 + cos y",
+    "variants": [
+      "z_x = 3x^2",
+      "z_x = 3x^2 - sin y",
+      "z_x = 3 sin^2 x",
+      "z_x = cos x + 3y^2"
+    ],
+    "correct_answer": "z_x = 3x^2 - sin y"
+  },
+  {
+    "question": "Find the partial derivative z_y of the function z(x, y) = x^3 + cos y",
+    "variants": [
+      "z_y = -sin y",
+      "z_y = 3x^2",
+      "z_y = 3x^2 - sin y",
+      "z_y = 3 sin^2 x",
+      "z_y = cos x + 3y^2"
+    ],
+    "correct_answer": "z_y = -sin y"
+  },
+  {
+    "question": "Determine the domain of the function: y = √(x² - 1) + ln x",
+    "variants": [
+      "x ∈ [1; +∞)",
+      "x ∈ (-∞; -1) ∪ (1; +∞)",
+      "x ∈ (-∞; -1) ∪ (1; x)",
+      "x ∈ (-∞; x)"
+    ],
+    "correct_answer": "x ∈ (-∞; -1) ∪ (1; +∞)"
+  },
+  {
+    "question": "Test the function of two variables on extreme points: z = x² + y² - 4x + 6y + 8",
+    "variants": [
+      "z(2; -3) = -4",
+      "z(2; -3) = -4",
+      "z(-2; 3) = 47",
+      "z(-2; 3) = saddle point"
+    ],
+    "correct_answer": "z(2; -3) = -4"
+  },
+  {
+    "question": "Test the function of two variables on extreme points: z = -x² - y² + 8x - 4y + 2",
+    "variants": [
+      "z(4; -2) = 22",
+      "z(4; -2) = 22",
+      "z(-4; 2) = 22",
+      "z(-4; 2) = saddle point"
+    ],
+    "correct_answer": "z(4; -2) = 22"
+  },
+  {
+    "question": "Test the function of two variables on extreme points: z = x² - y² - 4x + 6y + 8",
+    "variants": [
+      "z(2; 3) = saddle point",
+      "z(2; 3) = 13",
+      "z(2; 3) = 13",
+      "z(2; 3) = -4",
+      "z(2; 3) = saddle point"
+    ],
+    "correct_answer": "z(2; 3) = 13"
+  },
+  {
+    "question": "Determine the domain of the function: y = √(x² - 1) + ln x",
+    "variants": [
+      "x ∈ [1; +∞)",
+      "x ∈ (-∞; -1) ∪ (1; +∞)",
+      "x ∈ (-∞; -1) ∪ (1; x)",
+      "x ∈ (-∞; x)"
+    ],
+    "correct_answer": "x ∈ (-∞; -1) ∪ (1; +∞)"
+  },
+  {
+    "question": "Test the function of two variables on extreme points: z(x, y) = 2x + 2y - x² - y²",
+    "variants": [
+      "z_max(1,1) = 2",
+      "z_min(-1,-1) = -6",
+      "z(1,1) = saddle point",
+      "test fails"
+    ],
+    "correct_answer": "z_max(1,1) = 2"
+  },
+  {
+    "question": "Evaluate the iterated integral: ∫₀²∫₀¹ (x² + y) dy dx",
+    "variants": [
+      "11/3",
+      "2/5",
+      "-1",
+      "1",
+      "½"
+    ],
+    "correct_answer": "11/3"
+  },
+  {
+    "question": "Evaluate the iterated integral: ∫₀²∫₀¹ (y² + x) dy dx",
+    "variants": [
+      "8/3",
+      "2/5",
+      "-1",
+      "1",
+      "½"
+    ],
+    "correct_answer": "8/3"
+  },
+  {
+    "question": "Evaluate the iterated integral: ∫₀²∫₀¹ (y² + x + 2) dx dy",
+    "variants": [
+      "23/3",
+      "2/5",
+      "15/4",
+      "1",
+      "½"
+    ],
+    "correct_answer": "23/3"
+  },
+  {
+    "question": "Evaluate the iterated integral: ∫₀¹∫₀²(x² + y²)dydx",
+    "variants": [
+      "-4/3",
+      "2/5",
+      "15/4",
+      "-1",
+      "1/2"
+    ],
+    "correct_answer": "-4/3"
+  },
+  {
+    "question": "Reduce the double integral to iterated integral: ∫₀¹∫₀²(x² + y²)dydx",
+    "variants": [
+      "∫₀¹∫₀²(x² + y²)dydx",
+      "∫₀¹∫₀²(x² + y²)dydx",
+      "∫₀¹∫₀²(x² + y²)dydx",
+      "∫₀¹∫₀²(x² + y²)dydx",
+      "∫₀¹∫₀²(x² + y²)dydx"
+    ],
+    "correct_answer": "∫₀¹∫₀²(x² + y²)dydx"
+  },
+  {
+    "question": "Reduce the double integral to an iterated integral: ∬_D f(x, y) dS. D - region is depicted",
+    "variants": [
+      "∫₀² ∫₀² f(x, y) dy dx",
+      "∫₀² ∫₀² f(x, y) dx dy",
+      "∫₀² ∫₀² f(x, y) dy dx",
+      "∫₀² ∫₀² f(x, y) dx dy",
+      "∫₀² ∫₀² f(x, y) dy dx"
+    ],
+    "correct_answer": "∫₀² ∫₀² f(x, y) dy dx"
+  },
+  {
+    "question": "Find the common term of the number series: 1/2 + 1/4 + 1/6 + 1/8 + ...",
+    "variants": [
+      "1/2n",
+      "1/3n",
+      "1/(2n+1)",
+      "1/(n+1)",
+      "n/(2n-1)"
+    ],
+    "correct_answer": "1/(2n+1)"
+  },
+  {
+    "question": "Determine the domain of the function: y = √(x² - 1) + ln x",
+    "variants": [
+      "x ∈ [1; +∞)",
+      "x ∈ (-∞; -1) ∪ (1; +∞)",
+      "x ∈ (-∞; -1) ∪ (1; x)",
+      "x ∈ (-∞; x)"
+    ],
+    "correct_answer": "x ∈ (-∞; -1) ∪ (1; +∞)"
+  },
+  {
+    "question": "What series among following series is/are convergent: a) ∑∞1 3^n; b) ∑∞1 1/3^n; c) ∑∞2^n; d) ∑∞3^n/4^n;",
+    "variants": [
+      "a) and c)",
+      "a) and d)",
+      "c) and a) and d)",
+      "c) and d)"
+    ],
+    "correct_answer": "a) and c)"
+  },
+  {
+    "question": "What series among following series is/are divergent: a) ∑∞1 3^n; b) ∑∞1 1/3^n; c) ∑∞2^n; d) ∑∞3^n/4^n;",
+    "variants": [
+      "a) and c)",
+      "b) and e)",
+      "b) and d)",
+      "c) and e) and d)",
+      "c) and d)"
+    ],
+    "correct_answer": "a) and c)"
+  },
+  {
+    "question": "Determine the interval of convergence of the following power series: ∑∞1 2^n/n·x^n",
+    "variants": [
+      "(-1/2; 1/2)",
+      "(-1; 1)",
+      "(-2; 2)"
+    ],
+    "correct_answer": "(-1/2; 1/2)"
+  },
+  {
+    "question": "Determine the domain of the function: y = √(x² - 1) + ln x",
+    "variants": [
+      "x ∈ [1; +∞)",
+      "x ∈ (-∞; -1) ∪ (1; +∞)",
+      "x ∈ (-∞; -1) ∪ (1; x)",
+      "x ∈ (-∞; x)"
+    ],
+    "correct_answer": "x ∈ (-∞; -1) ∪ (1; +∞)"
+  },
+  {
+    "question": "Determine the interval of convergence of the power series: ∑∞n=1 5n2n·x^n",
+    "variants": [
+      "(-1/5; 1/5)",
+      "(-1; 1)",
+      "(-5; 5)"
+    ],
+    "correct_answer": "(-1/5; 1/5)"
+  },
+  {
+    "question": "Determine the interval of convergence of the power series: ∑∞n=1 n+24n·x^n",
+    "variants": [
+      "(-4; 4)",
+      "(-1; 1)",
+      "(-1/4; 1/4)"
+    ],
+    "correct_answer": "(-1/4; 1/4)"
+  },
+  {
+    "question": "Determine the interval of convergence of the power series: ∑∞n=1 n2n8n·x^n",
+    "variants": [
+      "(-8; 8)",
+      "(-1; 1)",
+      "(-1/8; 1/8)"
+    ],
+    "correct_answer": "(-1/8; 1/8)"
+  },
+  {
+    "question": "Determine the domain of the function: y = √(x² - 1) + ln x",
+    "variants": [
+      "x ∈ [1; +∞)",
+      "x ∈ (-∞; -1) ∪ (1; +∞)",
+      "x ∈ (-∞; -1) ∪ (1; x)",
+      "x ∈ (-∞; x)"
+    ],
+    "correct_answer": "x ∈ (-∞; -1) ∪ (1; +∞)"
+  },
+  {
+    "question": "What series among the following alternating series is/are convergent absolutely:",
+    "variants": [
+      "b) and e)",
+      "a) and c) and d)",
+      "c) and e) and d)",
+      "c) and d)"
+    ],
+    "correct_answer": "c) and d)"
+  },
+  {
+    "question": "What series among the following alternating series is/are convergent conditionally:",
+    "variants": [
+      "c)",
+      "a) and c) and d)",
+      "b) and c) and e)",
+      "c) and e) and d)",
+      "c) and d)"
+    ],
+    "correct_answer": "c) and d)"
+  },
+  {
+    "question": "What series among following alternating series is/are convergent conditionally: a) ∑(−1)^n 1/n; b) ∑(−1)^n 1/√n; c) ∑(−1)^n 2n/(5n−3); d) ∑(−1)^n 3^n; e) ∑(−1)^n 1/(3^n)",
+    "variants": [
+      "a) and b)",
+      "a) and c)",
+      "a) and d)",
+      "a) and e)",
+      "b) and c)",
+      "b) and d)",
+      "b) and e)",
+      "c) and d)",
+      "c) and e)",
+      "d) and e)"
+    ],
+    "correct_answer": "a) and b)"
+  },
+  {
+    "question": "What series among following alternating series is/are convergent absolutely: a) ∑(−1)^n 1/n; b) ∑(−1)^n 1/√n; c) ∑(−1)^n 2n/(5n−3); d) ∑(−1)^n 3^n; e) ∑(−1)^n 1/(3^n)",
+    "variants": [
+      "a) and b)",
+      "a) and c)",
+      "a) and d)",
+      "a) and e)",
+      "b) and c)",
+      "b) and d)",
+      "b) and e)",
+      "c) and d)",
+      "c) and e)",
+      "d) and e)"
+    ],
+    "correct_answer": "a) and b)"
+  },
+  {
+    "question": "Determine the domain of the function: y = √(x² - 1) + ln x",
+    "variants": [
+      "x ∈ [1; +∞)",
+      "x ∈ (-∞; -1) ∪ (1; +∞)",
+      "x ∈ (-∞; -1) ∪ (1; x)",
+      "x ∈ (-∞; x)"
+    ],
+    "correct_answer": "x ∈ (-∞; -1) ∪ (1; +∞)"
+  },
+  {
+    "question": "What series among following alternating series is/are divergent: a) ∑∞(-1)ⁿ 1/√n;",
+    "variants": [
+      "a) and b)",
+      "b) and c)",
+      "b) and c) and d)",
+      "a) and c) and d)"
+    ],
+    "correct_answer": "b) and c) and d)"
+  }
+];
+        // Добавляем номера ко всем вопросам
+        questions.forEach((question, index) => {
+            question.number = index + 1;
+        });
+
+        let currentQuestion = null;
+        let score = 0;
+
+        // Сразу показываем первый вопрос
+        showRandomQuestion();
+
+        function shuffleArray(array) {
+            for (let i = array.length - 1; i > 0; i--) {
+                const j = Math.floor(Math.random() * (i + 1));
+                [array[i], array[j]] = [array[j], array[i]];
+            }
+            return array;
+        }
+
+        function showRandomQuestion() {
+            // Если текущий вопрос был отвечен неправильно, оставляем его
+            if (!currentQuestion) {
+                currentQuestion = questions[Math.floor(Math.random() * questions.length)];
+            }
+            const questionElement = document.getElementById('question');
+            const optionsElement = document.getElementById('options');
+
+            // Отображаем номер вопроса вместе с текстом вопроса
+            questionElement.innerHTML = `№${currentQuestion.number}. ${currentQuestion.question}`;
+            optionsElement.innerHTML = '';
+
+            // Создаем массив вариантов ответов и перемешиваем их
+            const options = [...currentQuestion.variants];
+            shuffleArray(options);
+
+            options.forEach(option => {
+                const button = document.createElement('button');
+                button.className = 'option';
+                button.innerHTML = option;
+                button.onclick = () => checkAnswer(option);
+                optionsElement.appendChild(button);
+            });
+
+            if (window.MathJax) {
+                MathJax.typesetPromise();
+            }
+        }
+
+        function checkAnswer(selectedAnswer) {
+            const options = document.querySelectorAll('.option');
+            const correct = currentQuestion.correct_answer;
+
+            options.forEach(option => {
+                option.disabled = true;
+                // Сравниваем innerHTML, чтобы поддерживать LaTeX
+                if (option.innerHTML === correct) {
+                    option.classList.add('correct');
+                }
+                if (option.innerHTML === selectedAnswer && selectedAnswer !== correct) {
+                    option.classList.add('incorrect');
+                }
+            });
+
+            if (window.MathJax) {
+                MathJax.typesetPromise();
+            }
+
+            if (selectedAnswer === correct) {
+                score++;
+                document.getElementById('score').textContent = score;
+                currentQuestion = null; // Сбрасываем текущий вопрос
+                setTimeout(showRandomQuestion, 1000);
+            } else {
+                setTimeout(showRandomQuestion, 1000);
+            }
+        }
+    </script>
+</body>
+</html>
