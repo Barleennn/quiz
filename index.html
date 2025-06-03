@@ -1999,16 +1999,15 @@
             if (window.MathJax) {
                 MathJax.typesetPromise().catch(e => console.error('MathJax error:', e));
             }
-            
-            // Обновляем счет если ответ правильный
+              // Обновляем счет если ответ правильный
             if (isCorrect) {
                 score++;
                 document.getElementById('score').textContent = score;
                 currentQuestion = null; // сбрасываем текущий вопрос
             }
             
-            // Даем пользователю время увидеть результат (3 секунды)
-            setTimeout(showRandomQuestion, 3000);
+            // Даем пользователю время увидеть результат (уменьшенная задержка)
+            setTimeout(showRandomQuestion, 1000);
         }
         
         // Запускаем первый вопрос
