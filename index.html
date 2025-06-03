@@ -112,607 +112,20 @@
     <script>
         const questions = [
   {
-    "question": "$Rule $f: E \\to F$ is called as a function, if$",
+    "question": "$Rule $f: E \\rightarrow F$ is called a function, if$",
     "variants": [
-      "$\\forall x \\in D(f) \\subseteq E: \\exists ! y \\in F, y = f(x);$",
-      "$\\exists x \\in D(f) \\subseteq E: \\exists ! y \\in F, y = f(x);$",
-      "$\\exists x \\in D(f) \\subseteq E: \\forall y \\in F, y = f(x);$",
-      "$\\forall x \\in D(f) \\subseteq E: \\forall y \\in F, y = f(x);$",
-      "$\\forall x \\in D(f) \\subseteq E: \\exists y \\in F, y = f(x);$"
+      "$\\forall x \\in D(f) \\subseteq E: \\exists! \\, y \\in F, \\, y = f(x);$",
+      "$\\forall x \\in D(f) \\subseteq E: \\exists y \\in F, \\, y = f(x);$"
     ],
-    "correct_answer": "$\\forall x \\in D(f) \\subseteq E: \\exists ! y \\in F, y = f(x);$"
+    "correct_answer": "$\\forall x \\in D(f) \\subseteq E: \\exists! \\, y \\in F, \\, y = f(x);$"
   },
   {
     "question": "$Find range $R(f)$, if $f(x) = 2x - 5$, $x \\in [-2; 2]$$",
     "variants": [
-      "$[-9; -1];$",
-      "$(-9; -1);$",
-      "$(-\\infty;-9) \\cup (-1) \\cup (9; +\\infty);$",
-      "$[-9, +\\infty);$",
-      "$(-\\infty; +\\infty);$"
-    ],
-    "correct_answer": "$[-9; -1];$"
-  },
-  {
-    "question": "$Find range $R(f)$, if $f(x) = |x-1|$, $x \\in [0; 5]$$",
-    "variants": [
-      "$[0; 4];$",
-      "$(-\\infty;-4) \\cup (0) \\cup (4; +\\infty);$",
-      "$(-4; +\\infty);$",
-      "$[1; 4];$",
-      "$(-\\infty;+\\infty);$"
-    ],
-    "correct_answer": "$[0; 4];$"
-  },
-  {
-    "question": "$Find range $R(f)$, if $f(x) = 2x-5$, $x \\in [-2; 2]$$",
-    "variants": [
       "$[-9; -1]$",
-      "$(-9; -1)$",
-      "$(-\\infty;-9) \\cup (-1) \\cup (9; +\\infty)$",
-      "$[-9, +\\infty)$",
       "$(-\\infty; +\\infty)$"
     ],
     "correct_answer": "$[-9; -1]$"
-  },
-  {
-    "question": "$Find range $R(f)$, if $f(x) = \\1^{\\2}+2x-3$, $x \\in \\mathbb{R}$$",
-    "variants": [
-      "$(-4; -1)$",
-      "$[-4; 4]$",
-      "$(-\\infty;-4]$",
-      "$(-\\infty;-4) \\cup (4; +\\infty)$",
-      "$[-4, +\\infty)$"
-    ],
-    "correct_answer": "$[-4, +\\infty)$"
-  },
-  {
-    "question": "$Find range $R(f)$, if $f(x) = x + \\frac{1}{x}$, $x \\in (0; +\\infty)$$",
-    "variants": [
-      "$(-2; 2)$",
-      "$[0; 2]$",
-      "$(1; +\\infty)$",
-      "$(-\\infty; -2) \\cup (2; +\\infty)$",
-      "$[2; +\\infty)$"
-    ],
-    "correct_answer": "$[2; +\\infty)$"
-  },
-  {
-    "question": "$Determine the domain of the function: $y = \\\\sqrt{\\1^{\\2}-1} + \\\\ln x$$",
-    "variants": [
-      "$x \\in [1; \\infty)$",
-      "$x \\in (-1; 1)$",
-      "$x \\in (-\\infty; -1) \\cup (-1; 1)$",
-      "$x \\in (-\\infty; -1) \\cup (1; \\infty)$",
-      "$x \\in (-\\infty; \\infty)$"
-    ],
-    "correct_answer": "$x \\in [1; \\infty)$"
-  },
-  {
-    "question": "$Determine the domain of the function: $y = \\frac{5}{4-\\1^{\\2}}$$",
-    "variants": [
-      "$x \\in (-\\infty; -2) \\cup (-2; 2) \\cup (2; \\infty)$",
-      "$x \\in (-2; 2)$",
-      "$x \\in (-\\infty; \\infty)$",
-      "$x \\in (2; \\infty)$",
-      "$x \\in (-\\infty; -2) \\cup (2; \\infty)$"
-    ],
-    "correct_answer": "$x \\in (-\\infty; -2) \\cup (-2; 2) \\cup (2; \\infty)$"
-  },
-  {
-    "question": "$Determine the domain of the function: $y = \\frac{7-x}{3-x} + \\\\ln(x-1)$$",
-    "variants": [
-      "$x \\in (1;3) \\cup (3;\\infty)$",
-      "$x \\in (-\\infty;-3) \\cup (3;\\infty)$"
-    ],
-    "correct_answer": "$x \\in (1;3) \\cup (3;\\infty)$"
-  },
-  {
-    "question": "$Determine the domain of the function: $y = \\frac{4}{\\\\sqrt{2-x}} + \\\\ln x$$",
-    "variants": [
-      "$x \\in (0;2)$",
-      "$x \\in [2;\\infty)$"
-    ],
-    "correct_answer": "$x \\in (0;2)$"
-  },
-  {
-    "question": "$\\varepsilon$ - neighborhood of a point $a \\overset{def}{\\iff} \\dots$",
-    "variants": [
-      "$\\{x: |x-a| < \\varepsilon\\}$",
-      "$\\{x: |x-\\varepsilon| \\le a\\}$"
-    ],
-    "correct_answer": "$\\{x: |x-a| < \\varepsilon\\}$"
-  },
-  {
-    "question": "$Domain of a sequence $\\{x_n\\}$ is$",
-    "variants": [
-      "$the set of natural numbers - $\\\\mathbb{N}$$",
-      "$the set of rational numbers - $\\\\mathbb{Q}$$"
-    ],
-    "correct_answer": "$the set of natural numbers - $\\\\mathbb{N}$$"
-  },
-  {
-    "question": "$Find the limit: $\\lim_{n \\to \\infty} (\\\\sqrt{\\1^{\\2} + n} - n)$$",
-    "variants": [
-      "$-1$",
-      "$0$",
-      "$\\frac{1}{2}$",
-      "$\\infty$",
-      "$1$"
-    ],
-    "correct_answer": "$\\frac{1}{2}$"
-  },
-  {
-    "question": "$Calculate the limit: $\\lim_{n \\to \\infty} \\frac{(n+1)(n+2)(n+3)}{\\1^{\\2}}$$",
-    "variants": [
-      "$-1$",
-      "$0$",
-      "$3$",
-      "$\\infty$",
-      "$1$"
-    ],
-    "correct_answer": "$1$"
-  },
-  {
-    "question": "$Calculate the limit: $\\lim_{n \\to \\infty} \\frac{3+5n-8\\1^{\\2}}{2-n+2\\1^{\\2}}$$",
-    "variants": [
-      "$\\infty$",
-      "$\\frac{3}{2}$",
-      "$-4$",
-      "$-8$",
-      "$0$"
-    ],
-    "correct_answer": "$-4$"
-  },
-  {
-    "question": "$Calculate the limit: $\\lim_{n \\to \\infty} \\frac{7\\1^{\\2}+10n+20}{\\1^{\\2}-7n-10}$$",
-    "variants": [
-      "$\\infty$",
-      "$10$",
-      "$1$",
-      "$7$",
-      "$0$"
-    ],
-    "correct_answer": "$0$"
-  },
-  {
-    "question": "$\\lim_{n \\to \\infty} (n(\\\\sqrt{\\1^{\\2}+4}-n)) =$",
-    "variants": [
-      "$\\infty$",
-      "$2$",
-      "$1$",
-      "$-1$",
-      "$0$"
-    ],
-    "correct_answer": "$2$"
-  },
-  {
-    "question": "$\\lim_{n \\to \\infty} \\left(\\frac{2n+1}{2n-1}\\right)^{3n+1} =$",
-    "variants": [
-      "$\\infty$",
-      "$\\1^{\\2}$",
-      "$1$",
-      "$0$",
-      "$e^{-3}$"
-    ],
-    "correct_answer": "$\\1^{\\2}$"
-  },
-  {
-    "question": "$\\lim_{n \\to \\infty} \\left(\\frac{n+3}{2n-1}\\right)^n =$",
-    "variants": [
-      "$\\infty$",
-      "$2$",
-      "$1$",
-      "$\\frac{1}{2}$",
-      "$0$"
-    ],
-    "correct_answer": "$0$"
-  },
-  {
-    "question": "$\\lim_{n \\to \\infty} \\\\sqrt{9+\\frac{1}{n}} =$",
-    "variants": [
-      "$3$",
-      "$1$",
-      "$-1$",
-      "$\\frac{2}{3}$",
-      "$\\infty$"
-    ],
-    "correct_answer": "$3$"
-  },
-  {
-    "question": "$Find the limit of the function: $\\lim_{x \\to \\infty} \\frac{-3\\1^{\\2} - 4x + 1}{6\\1^{\\2} - 2}$$",
-    "variants": [
-      "$-\\frac{\\1}{\\2}$",
-      "$\\frac{\\1}{\\2}$",
-      "$0$",
-      "$\\infty$",
-      "$2$"
-    ],
-    "correct_answer": "$-\\frac{\\1}{\\2}$"
-  },
-  {
-    "question": "$Find the limit of the function: $\\lim_{x \\to \\infty} \\frac{3\\1^{\\2} - 4x + 1}{6x - 2}$$",
-    "variants": [
-      "$\\infty$",
-      "$0$",
-      "$\\frac{\\1}{\\2}$",
-      "$2$",
-      "$\\frac{\\1}{\\2}$"
-    ],
-    "correct_answer": "$\\infty$"
-  },
-  {
-    "question": "$Find the limit of the function: $\\lim_{x \\to \\infty} \\frac{5x - 1}{1 - \\1^{\\2}}$$",
-    "variants": [
-      "$0$",
-      "$\\infty$",
-      "$-5$",
-      "$1$",
-      "$5$"
-    ],
-    "correct_answer": "$0$"
-  },
-  {
-    "question": "$Find the limit of the function: $\\lim_{x \\to 0} \\frac{\\\\sin(5x)}{x}$$",
-    "variants": [
-      "$5$",
-      "$0$",
-      "$\\infty$",
-      "$1$",
-      "$-1$"
-    ],
-    "correct_answer": "$5$"
-  },
-  {
-    "question": "$Find the limit of the function: $\\lim_{x \\to 0} \\frac{\\\\tan(4x)}{x}$$",
-    "variants": [
-      "$4$",
-      "$0$",
-      "$\\infty$",
-      "$1$",
-      "$-1$"
-    ],
-    "correct_answer": "$4$"
-  },
-  {
-    "question": "$Find the limit of the function: $\\lim_{x \\to 0} \\frac{\\\\sin(8x)}{x}$$",
-    "variants": [
-      "$8$",
-      "$0$",
-      "$\\infty$",
-      "$1$",
-      "$-1$"
-    ],
-    "correct_answer": "$8$"
-  },
-  {
-    "question": "$\\lim_{x \\to 1} \\left(\\frac{1}{1-x} - \\frac{3}{1-\\1^{\\2}}\\right) =$",
-    "variants": [
-      "$-1$",
-      "$0$",
-      "$-\\infty$",
-      "$1$",
-      "$3$"
-    ],
-    "correct_answer": "$-1$"
-  },
-  {
-    "question": "$\\lim_{x \\to 0} \\frac{x}{\\\\sqrt{2+x} - \\\\sqrt{2-x}} =$",
-    "variants": [
-      "$\\\\sqrt{2}$",
-      "$2\\\\sqrt{2}$",
-      "$0$",
-      "$\\infty$",
-      "$2$"
-    ],
-    "correct_answer": "$\\\\sqrt{2}$"
-  },
-  {
-    "question": "$\\lim_{x \\to 0} \\frac{\\\\sin \\pi x}{\\\\sin 3 \\pi x}$",
-    "variants": [
-      "$\\frac{1}{3}$",
-      "$1$"
-    ],
-    "correct_answer": "$\\frac{1}{3}$"
-  },
-  {
-    "question": "$\\lim_{x \\to \\infty} \\\\left(\\\\frac{x+3}{x+4}\\\\right)^{x+2}$",
-    "variants": [
-      "$e^{-1}$",
-      "$1$"
-    ],
-    "correct_answer": "$e^{-1}$"
-  },
-  {
-    "question": "$\\lim_{x \\to 0} \\frac{e^x - e^{-x} - 2x}{x - \\\\sin x}$",
-    "variants": [
-      "$2$",
-      "$\\infty$"
-    ],
-    "correct_answer": "$2$"
-  },
-  {
-    "question": "$\\lim_{x \\to 1} \\frac{x^m - 1}{x - 1}$",
-    "variants": [
-      "$m$",
-      "$0$"
-    ],
-    "correct_answer": "$m$"
-  },
-  {
-    "question": "$Take derivative of the function: $y = \\1^{\\2} \\cdot \\\\ln x$$",
-    "variants": [
-      "$y' = 2x \\\\ln x + x$",
-      "$y' = 2x$",
-      "$y' = 2x \\\\ln x$",
-      "$y' = 2x \\\\ln x - x$",
-      "$y' = x (\\\\ln x + 1)$"
-    ],
-    "correct_answer": "$y' = 2x \\\\ln x + x$"
-  },
-  {
-    "question": "$If $f(x) = \\1^{\\2} - 4x + 3$; $f(a) = f(b)$; $a < b$, then$",
-    "variants": [
-      "$a < 2$",
-      "$a > 2$",
-      "$a > 3$",
-      "$a < 1$",
-      "$a > 1$"
-    ],
-    "correct_answer": "$a < 2$"
-  },
-  {
-    "question": "$Take second order derivative of the function: $y = 4\\1^{\\2} + 5\\1^{\\2} - 7x + 1$$",
-    "variants": [
-      "$y'' = 24x + 10$",
-      "$y'' = 12\\1^{\\2} + 10x - 7$",
-      "$y'' = 12\\1^{\\2} + 10x$",
-      "$y'' = 24\\1^{\\2} + 10$",
-      "$y'' = 4x + 10$"
-    ],
-    "correct_answer": "$y'' = 24x + 10$"
-  },
-  {
-    "question": "$Take second order derivative of the function: $y = \\\\sin x$$",
-    "variants": [
-      "$y'' = -\\\\sin x$",
-      "$y'' = \\\\sin x$",
-      "$y'' = -\\\\cos x$",
-      "$y'' = \\\\cos x$",
-      "$y'' = \\\\arcsin x$"
-    ],
-    "correct_answer": "$y'' = -\\\\sin x$"
-  },
-  {
-    "question": "$Take derivative of the function: $y = 4 \\\\sin(6x-1)$$",
-    "variants": [
-      "$y' = 24 \\\\cos(6x-1)$",
-      "$y' = 4 \\\\cos(6x-1)$",
-      "$y' = -24 \\\\cos(6x-1)$",
-      "$y' = 6 \\\\cos(6x-1)$",
-      "$y' = 24 \\\\sin(x-6)$"
-    ],
-    "correct_answer": "$y' = 24 \\\\cos(6x-1)$"
-  },
-  {
-    "question": "$Find the equations of the vertical asymptotes of the function: $y = rac{2-x}{\\1^{\\2}-9}$$",
-    "variants": [
-      "$x = -3 \\text{ and } x=3$",
-      "$x=2$",
-      "$x=\\frac{\\1}{\\2}$",
-      "$y=-3 \\text{ and } y=3$",
-      "$y=2x-3$"
-    ],
-    "correct_answer": "$x = -3 \\text{ and } x=3$"
-  },
-  {
-    "question": "$Find the equations of the vertical asymptotes of the function: $y = rac{x+4}{\\1^{\\2}-25}$$",
-    "variants": [
-      "$x = -5 \\text{ and } x=5$",
-      "$x=-4$",
-      "$x=-\\frac{\\1}{\\2}$",
-      "$y=-5 \\text{ and } y=5$",
-      "$y=-4x+5$"
-    ],
-    "correct_answer": "$x = -5 \\text{ and } x=5$"
-  },
-  {
-    "question": "$Find the equations of the horizontal asymptotes of the function: $y = rac{2\\1^{\\2}-x}{\\1^{\\2}-9}$$",
-    "variants": [
-      "$y=2$",
-      "$x=2$",
-      "$y=\\frac{\\1}{\\2}$",
-      "$y=-3 \\text{ and } y=3$",
-      "$y=2x-3$"
-    ],
-    "correct_answer": "$y=2$"
-  },
-  {
-    "question": "$Find the equations of the horizontal asymptotes of the function: $y = rac{3\\1^{\\2}+4}{\\1^{\\2}-25}$$",
-    "variants": [
-      "$y=3$",
-      "$x=3$",
-      "$y=-\\frac{\\1}{\\2}$",
-      "$y=-5 \\text{ and } y=5$",
-      "$y=-4x+5$"
-    ],
-    "correct_answer": "$y=3$"
-  },
-  {
-    "question": "$Find the partial derivative $z_x$ of the function of two variables: $z(x,y) = \\1^{\\2} \\\\sin y$$",
-    "variants": [
-      "$z_x = 2x \\\\sin y$",
-      "$z_x = \\1^{\\2} \\\\cos y$",
-      "$z_x = 2x \\\\cos y$",
-      "$z_x = 2xy \\\\cos y$",
-      "$z_x = 2x \\\\sin y + \\1^{\\2} \\\\cos y$"
-    ],
-    "correct_answer": "$z_x = 2x \\\\sin y$"
-  },
-  {
-    "question": "$Find the partial derivative $z_y$ of the function of two variables: $z(x,y) = \\1^{\\2} \\\\sin y$$",
-    "variants": [
-      "$z_y = \\1^{\\2} \\\\cos y$",
-      "$z_y = 2x \\\\sin y$",
-      "$z_y = 2x \\\\cos y$",
-      "$z_y = 2xy \\\\cos y$",
-      "$z_y = 2x \\\\sin y + \\1^{\\2} \\\\cos y$"
-    ],
-    "correct_answer": "$z_y = \\1^{\\2} \\\\cos y$"
-  },
-  {
-    "question": "$Find the partial derivative $z_x$ of the function of two variables: $z(x,y) = \\1^{\\2} \\\\cos y$$",
-    "variants": [
-      "$z_x = 3\\1^{\\2} \\\\cos y$",
-      "$z_x = -\\1^{\\2} \\\\sin y$",
-      "$z_x = -3\\1^{\\2} \\\\sin y$",
-      "$z_x = 3xy \\\\cos y$",
-      "$z_x = 3x \\\\cos y - \\1^{\\2} \\\\sin y$"
-    ],
-    "correct_answer": "$z_x = 3\\1^{\\2} \\\\cos y$"
-  },
-  {
-    "question": "$Find the partial derivative $z_y$ of the function of two variables: $z(x,y) = \\1^{\\2} \\\\cos y$$",
-    "variants": [
-      "$z_y = -\\1^{\\2} \\\\sin y$",
-      "$z_y = 3\\1^{\\2} \\\\cos y$",
-      "$z_y = 2x \\\\cos y$",
-      "$z_y = 2xy \\\\cos y$",
-      "$z_y = 2x \\\\sin y + \\1^{\\2} \\\\cos y$"
-    ],
-    "correct_answer": "$z_y = -\\1^{\\2} \\\\sin y$"
-  },
-  {
-    "question": "$Find the partial derivative $z_x$ of the function of two variables: $z(x,y) = \\1^{\\2} \\\\ln y$$",
-    "variants": [
-      "$z_x = 2x \\\\ln y$",
-      "$z_x = \\frac{\\1^{\\2}}{y}$",
-      "$z_x = \\frac{2x}{y}$",
-      "$z_x = 2x \\\\ln y + \\frac{\\1^{\\2}}{y}$",
-      "$z_x = 2x + \\frac{1}{y}$"
-    ],
-    "correct_answer": "$z_x = 2x \\\\ln y$"
-  },
-  {
-    "question": "$Find the partial derivative $z_y$ of the function of two variables: $z(x,y) = \\1^{\\2} \\\\ln y$$",
-    "variants": [
-      "$z_y = \\frac{\\1^{\\2}}{y}$",
-      "$z_y = 2x \\\\ln y$",
-      "$z_y = 2x$",
-      "$z_y = 2xy - 2\\1^{\\2} \\\\ln y$",
-      "$z_y = 2x + \\frac{1}{y}$"
-    ],
-    "correct_answer": "$z_y = \\frac{\\1^{\\2}}{y}$"
-  },
-  {
-    "question": "$Find the partial derivative $z_x$ of the function of two variables: $z(x,y) = \\\\sin x + \\\\ln y$$",
-    "variants": [
-      "$z_x = \\\\cos x$",
-      "$z_x = \\frac{1}{y}$",
-      "$z_x = \\\\cos x + \\frac{1}{y}$",
-      "$z_x = \\\\sin x + \\frac{1}{y}$",
-      "$z_x = \\\\cos x + \\\\ln y$"
-    ],
-    "correct_answer": "$z_x = \\\\cos x$"
-  },
-  {
-    "question": "$Find the partial derivative $z_x$ of the function of two variables: $z(x,y) = \\1^{\\2} + \\\\cos y$$",
-    "variants": [
-      "$z_x = 3\\1^{\\2}$",
-      "$z_x = -\\\\sin y$",
-      "$z_x = 3\\1^{\\2} - \\\\sin y$",
-      "$z_x = 3\\\\si\\1^{\\2} x$",
-      "$z_x = \\\\cos x + 3\\1^{\\2}$"
-    ],
-    "correct_answer": "$z_x = 3\\1^{\\2}$"
-  },
-  {
-    "question": "$Find the partial derivative $z_y$ of the function of two variables: $z(x,y) = \\1^{\\2} + \\\\cos y$$",
-    "variants": [
-      "$z_y = -\\\\sin y$",
-      "$z_y = 3\\1^{\\2}$",
-      "$z_y = 3\\1^{\\2} - \\\\sin y$",
-      "$z_y = 3\\\\si\\1^{\\2} x$",
-      "$z_y = \\\\cos x + 3\\1^{\\2}$"
-    ],
-    "correct_answer": "$z_y = -\\\\sin y$"
-  },
-  {
-    "question": "$Find the common term of the number series: $\\frac{1}{3} + \\frac{1}{6} + \\frac{1}{9} + \\frac{1}{12} + \\dots$$",
-    "variants": [
-      "$\\frac{1}{3n}$",
-      "$\\frac{1}{2n}$",
-      "$\\frac{1}{2n+1}$",
-      "$\\frac{1}{n+1}$",
-      "$\\frac{n}{2n-1}$"
-    ],
-    "correct_answer": "$\\frac{1}{3n}$"
-  },
-  {
-    "question": "$Find the common term of the number series: $\\frac{1}{2} + \\frac{1}{3} + \\frac{1}{4} + \\frac{1}{5} + \\dots$$",
-    "variants": [
-      "$\\frac{1}{n+1}$",
-      "$\\frac{1}{2n}$",
-      "$\\frac{1}{2n+1}$",
-      "$\\frac{1}{3n}$",
-      "$\\frac{n}{2n-1}$"
-    ],
-    "correct_answer": "$\\frac{1}{n+1}$"
-  },
-  {
-    "question": "$What series among harmonic series i\\frac{\\1}{\\2}re convergent:$",
-    "variants": [
-      "$a) $\\sum_{n=1}^{\\infty} \\frac{1}{n}$$",
-      "$b) $\\sum_{n=1}^{\\infty} \\frac{1}{\\\\sqrt{n}}$$",
-      "$c) $\\sum_{n=1}^{\\infty} \\frac{1}{n^{\\frac{\\1}{\\2}}}$$",
-      "$d) $\\sum_{n=1}^{\\infty} \\frac{1}{\\1^{\\2}}$$",
-      "$e) $\\sum_{n=1}^{\\infty} \\frac{1}{n^{\\frac{\\1}{\\2}}}$$"
-    ],
-    "correct_answer": "$d) $\\sum_{n=1}^{\\infty} \\frac{1}{\\1^{\\2}}$$"
-  },
-  {
-    "question": "$Find range $R(f)$, if $f(x) = 2x - 5, x \\in [-2; 2]$$",
-    "variants": [
-      "$[-9; -1]$",
-      "$(-9; -1)$",
-      "$(-\\infty;-9) \\cup (-1) \\cup (9; +\\infty)$",
-      "$[-9, +\\infty)$",
-      "$(-\\infty;+\\infty)$"
-    ],
-    "correct_answer": "$[-9; -1]$"
-  },
-  {
-    "question": "$Find range $R(f)$, if $f(x) = |x - 1|, x \\in [0; 5]$$",
-    "variants": [
-      "$[0; 4]$",
-      "$(-\\infty;-4) \\cup (0) \\cup (4; +\\infty)$",
-      "$(-4; +\\infty)$",
-      "$[1; 4]$",
-      "$(-\\infty;\\infty)$"
-    ],
-    "correct_answer": "$[0; 4]$"
-  },
-  {
-    "question": "$Graph of $f(x) = 2\\1^{\\2} + bx + c$ is tangent to axes $Ox$ at a point $A (1; 0)$, then $f(0) = $$",
-    "variants": [
-      "$2$",
-      "$-2$",
-      "$1$",
-      "$-1$",
-      "$0$"
-    ],
-    "correct_answer": "$2$"
-  },
-  {
-    "question": "$Graph of $f(x) = 2\\1^{\\2} + bx + c$ is tangent to axes $Ox$ at a point $A (1; 0)$, then $f'(0) = $$",
-    "variants": [
-      "$-4$",
-      "$0$",
-      "$2$",
-      "$1$",
-      "$4$"
-    ],
-    "correct_answer": "$-4$"
   },
   {
     "question": "$Find range $R(f)$, if $f(x) = |x - 1|$, $x \\in [0; 5]$$",
@@ -723,12 +136,193 @@
     "correct_answer": "$[0; 4]$"
   },
   {
+    "question": "$Rule $f: E \\rightarrow F$ is called as a function, if$",
+    "variants": [
+      "$\\forall x \\in D(f) \\subseteq E: \\exists! \\, y \\in F, \\, y = f(x)$",
+      "$\\forall x \\in D(f) \\subseteq E: \\exists y \\in F, \\, y = f(x)$"
+    ],
+    "correct_answer": "$\\forall x \\in D(f) \\subseteq E: \\exists! \\, y \\in F, \\, y = f(x)$"
+  },
+  {
     "question": "$Find range $R(f)$, if $f(x) = \\1^{\\2} + 2x - 3$, $x \\in \\mathbb{R}$$",
     "variants": [
       "$(-4; -1)$",
       "$[-4; +\\infty)$"
     ],
     "correct_answer": "$[-4; +\\infty)$"
+  },
+  {
+    "question": "$Determine the domain of the function: $y = \\frac{5}{4 - \\1^{\\2}}$$",
+    "variants": [
+      "$x \\in (-\\infty; -2) \\cup (-2; 2) \\cup (2; \\infty)$",
+      "$x \\in (-2; 2)$",
+      "$x \\in (-\\infty; \\infty)$",
+      "$x \\in (2; \\infty)$",
+      "$x \\in (-\\infty; -2) \\cup (2; \\infty)$"
+    ],
+    "correct_answer": "$x \\in (-\\infty; -2) \\cup (-2; 2) \\cup (2; \\infty)$"
+  },
+  {
+    "question": "$Determine the domain of the function: $y = \\frac{\\\\ln(x - 4)}{x - 7}$$",
+    "variants": [
+      "$x \\in (4; 7) \\cup (7; \\infty)$",
+      "$x \\in (4; \\infty)$",
+      "$x \\in (4; 7)$",
+      "$x \\in (-\\infty; \\infty)$"
+    ],
+    "correct_answer": "$x \\in (4; 7) \\cup (7; \\infty)$"
+  },
+  {
+    "question": "$$\\varepsilon$-neighborhood of a point $a$ is defined as…$",
+    "variants": [
+      "$\\{x : |x - a| < \\varepsilon \\}$",
+      "$\\{x : |x - \\varepsilon| > a \\}$",
+      "$\\{x : |x - \\varepsilon| < a \\}$",
+      "$\\{x : |x - \\varepsilon| \\leq a \\}$"
+    ],
+    "correct_answer": "$\\{x : |x - a| < \\varepsilon \\}$"
+  },
+  {
+    "question": "$Domain of a sequence $\\{x_n\\}$ is$",
+    "variants": [
+      "$the set of natural numbers – $\\mathbb{N}$$",
+      "$the set of integers – $\\mathbb{Z}$$",
+      "$the set of real numbers – $\\mathbb{R}$$",
+      "$the set of positive real numbers – $\\mathbb{R}_+$$",
+      "$the set of rational numbers – $\\mathbb{Q}$$"
+    ],
+    "correct_answer": "$the set of natural numbers – $\\mathbb{N}$$"
+  },
+  {
+    "question": "$Find the limit $\\lim_{n \\to \\infty} \\frac{2^{n+1} + 3^{n+1}}{2^n + 3^n}$$",
+    "variants": [
+      "$\\frac{2}{3}$",
+      "$0$",
+      "$1$",
+      "$6$",
+      "$3$"
+    ],
+    "correct_answer": "$3$"
+  },
+  {
+    "question": "$Find the limit $\\lim_{n \\to \\infty} \\frac{\\1^{\\2} - n}{n - \\\\sqrt{n}}$$",
+    "variants": [
+      "$\\infty$",
+      "$0$",
+      "$1$",
+      "$-1$",
+      "$2$"
+    ],
+    "correct_answer": "$\\infty$"
+  },
+  {
+    "question": "$Find the limit $\\lim_{n \\to \\infty} (\\\\sqrt{\\1^{\\2} + n} - n)$$",
+    "variants": [
+      "$-1$",
+      "$0$",
+      "$\\frac{1}{2}$",
+      "$\\infty$",
+      "$1$"
+    ],
+    "correct_answer": "$\\frac{1}{2}$"
+  },
+  {
+    "question": "$Find the limit $\\lim_{n \\to \\infty} \\left( \\frac{3 - n}{2n + 1} \\cdot \\frac{3\\1^{\\2} + 2}{4\\1^{\\2} + 1} \\right)$$",
+    "variants": [
+      "$-\\frac{5}{4}$",
+      "$0$",
+      "$1$",
+      "$\\infty$",
+      "$-1$"
+    ],
+    "correct_answer": "$-\\frac{5}{4}$"
+  },
+  {
+    "question": "$Find the limit: $\\\\lim\\limits_{n \\to \\infty} \\frac{(n+1)(n+2)(n+3)}{\\1^{\\2}}$$",
+    "variants": [
+      "$-1$",
+      "$0$",
+      "$3$",
+      "$\\infty$",
+      "$1$"
+    ],
+    "correct_answer": "$1$"
+  },
+  {
+    "question": "$Find the limit: $\\\\lim\\limits_{n \\to \\infty} \\frac{3 + 5n - 8\\1^{\\2}}{2 - n + 2\\1^{\\2}}$$",
+    "variants": [
+      "$\\infty$",
+      "$0$",
+      "$\\frac{3}{2}$",
+      "$-4$"
+    ],
+    "correct_answer": "$-4$"
+  },
+  {
+    "question": "$Find the limit: $\\\\lim\\limits_{n \\to \\infty} \\frac{7\\1^{\\2} + 10n + 20}{\\1^{\\2} - 7n - 10}$$",
+    "variants": [
+      "$\\infty$",
+      "$10$",
+      "$1$",
+      "$7$",
+      "$0$"
+    ],
+    "correct_answer": "$7$"
+  },
+  {
+    "question": "$Find the limit: $\\\\lim\\limits_{n \\to \\infty} \\frac{\\1^{\\2} - 10}{n}$$",
+    "variants": [
+      "$\\infty$",
+      "$10$",
+      "$1$",
+      "$-10$",
+      "$0$"
+    ],
+    "correct_answer": "$\\infty$"
+  },
+  {
+    "question": "$Find the limit: $\\lim_{n \\to \\infty} \\left(n(\\\\sqrt{\\1^{\\2} + 4} - n)\\right)$$",
+    "variants": [
+      "$\\infty$",
+      "$2$",
+      "$1$",
+      "$-1$",
+      "$0$"
+    ],
+    "correct_answer": "$2$"
+  },
+  {
+    "question": "$Find the limit: $\\lim_{n \\to \\infty} \\left(\\frac{2n + 1}{2n - 1}\\right)^{n+1}$$",
+    "variants": [
+      "$\\infty$",
+      "$\\1^{\\2}$",
+      "$1$",
+      "$0$",
+      "$e^{-3}$"
+    ],
+    "correct_answer": "$\\1^{\\2}$"
+  },
+  {
+    "question": "$Find the limit: $\\lim_{n \\to \\infty} \\left(\\frac{n + 3}{2n - 1}\\right)^n$$",
+    "variants": [
+      "$\\infty$",
+      "$2$",
+      "$1$",
+      "$\\frac{1}{2}$",
+      "$0$"
+    ],
+    "correct_answer": "$0$"
+  },
+  {
+    "question": "$Find the limit: $\\lim_{n \\to \\infty} \\\\sqrt[3]{9 + \\frac{1}{n}}$$",
+    "variants": [
+      "$3$",
+      "$1$",
+      "$-1$",
+      "$\\frac{2}{3}$",
+      "$0$"
+    ],
+    "correct_answer": "$3$"
   },
   {
     "question": "$Find the limit: $\\\\lim\\limits_{n \\to \\infty} \\frac{n+1}{\\\\sqrt{\\1^{\\2} + 1}}$$",
@@ -774,6 +368,138 @@
     "correct_answer": "$\\frac{2}{5}$"
   },
   {
+    "question": "$Find the limit of the function: $\\\\lim\\limits_{x \\to \\infty} \\frac{-3\\1^{\\2} - 4x + 1}{6\\1^{\\2} - 2}$$",
+    "variants": [
+      "$-\\frac{1}{2}$",
+      "$\\frac{1}{2}$",
+      "$0$",
+      "$\\infty$",
+      "$2$"
+    ],
+    "correct_answer": "$-\\frac{1}{2}$"
+  },
+  {
+    "question": "$Find the limit of the function: $\\\\lim\\limits_{x \\to \\infty} \\frac{3\\1^{\\2} - 4x + 1}{6x - 2}$$",
+    "variants": [
+      "$\\infty$",
+      "$0$",
+      "$\\frac{1}{2}$",
+      "$2$",
+      "$\\frac{2}{3}$"
+    ],
+    "correct_answer": "$\\infty$"
+  },
+  {
+    "question": "$Find the limit of the function: $\\\\lim\\limits_{x \\to \\infty} \\frac{5x - 1}{1 - \\1^{\\2}}$$",
+    "variants": [
+      "$0$",
+      "$\\infty$",
+      "$-5$",
+      "$1$",
+      "$5$"
+    ],
+    "correct_answer": "$0$"
+  },
+  {
+    "question": "$Find the limit of the function: $\\\\lim\\limits_{x \\to 0} \\frac{\\\\sin(5x)}{x}$$",
+    "variants": [
+      "$0$",
+      "$\\infty$",
+      "$1$",
+      "$-1$",
+      "$5$"
+    ],
+    "correct_answer": "$5$"
+  },
+  {
+    "question": "$Find the limit of the function: $\\lim_{x \\to 0} \\frac{\\\\tan(4x)}{x}$$",
+    "variants": [
+      "$4$",
+      "$0$",
+      "$\\infty$",
+      "$1$",
+      "$-1$"
+    ],
+    "correct_answer": "$4$"
+  },
+  {
+    "question": "$Find the limit of the function: $\\lim_{x \\to 0} \\frac{\\\\sin(8x)}{x}$$",
+    "variants": [
+      "$8$",
+      "$0$",
+      "$\\infty$",
+      "$1$",
+      "$-1$"
+    ],
+    "correct_answer": "$8$"
+  },
+  {
+    "question": "$Evaluate the limit: $\\lim_{x \\to 1} \\left( \\frac{1}{1 - x} - \\frac{3}{1 - \\1^{\\2}} \\right)$$",
+    "variants": [
+      "$-1$",
+      "$0$",
+      "$-\\infty$",
+      "$1$",
+      "$3$"
+    ],
+    "correct_answer": "$-1$"
+  },
+  {
+    "question": "$Evaluate the limit: $\\lim_{x \\to 0} \\frac{x}{\\\\sqrt{2 + x} - \\\\sqrt{2 - x}}$$",
+    "variants": [
+      "$\\\\sqrt{2}$",
+      "$2\\\\sqrt{2}$",
+      "$0$",
+      "$\\infty$",
+      "$2$"
+    ],
+    "correct_answer": "$\\\\sqrt{2}$"
+  },
+  {
+    "question": "$Find the limit: $\\lim_{x \\to 0} \\frac{\\\\sin \\pi x}{\\\\sin 3\\pi x}$$",
+    "variants": [
+      "$\\frac{1}{3}$",
+      "$0$",
+      "$3$",
+      "$\\infty$",
+      "$1$"
+    ],
+    "correct_answer": "$\\frac{1}{3}$"
+  },
+  {
+    "question": "$Find the limit: $\\lim_{x \\to \\infty} \\left( \\frac{x+3}{x+4} \\right)^{x+2}$$",
+    "variants": [
+      "$e^{-1}$",
+      "$e$",
+      "$0$",
+      "$\\infty$",
+      "$1$"
+    ],
+    "correct_answer": "$e^{-1}$"
+  },
+  {
+    "question": "$Find the limit: $\\lim_{x \\to 0} \\frac{e^x - e^{-x} - 2x}{x - \\\\sin x}$$",
+    "variants": [
+      "$0$",
+      "$e$",
+      "$1$",
+      "$\\infty$",
+      "$2$"
+    ],
+    "correct_answer": "$2$"
+  },
+  {
+    "question": "$Find the limit: $\\lim_{x \\to 1} \\frac{x^m - 1}{x - 1}$$",
+    "variants": [
+      "$m$",
+      "$-m$",
+      "$1$",
+      "$\\infty$",
+      "$0$"
+    ],
+    "correct_answer": "$m$"
+  },
+  {
     "question": "$Evaluate the limit: $\\\\lim\\limits_{x \\to 3} \\frac{\\\\sqrt{9 + 2x - 5} - 3}{\\\\sqrt{x} - 2}$$",
     "variants": [
       "$\\frac{12}{5}$",
@@ -815,6 +541,81 @@
     "correct_answer": "$\\left(\\frac{f}{g}\\right)' = \\frac{f' \\cdot g - f \\cdot g'}{\\1^{\\2}}$"
   },
   {
+    "question": "$Graph of $f(x) = 2\\1^{\\2} + bx + c$ is tangent to axes $Ox$ at a point $A(1; 0)$, then $f'(0) = $$",
+    "variants": [
+      "$2$",
+      "$-2$",
+      "$1$",
+      "$-1$"
+    ],
+    "correct_answer": "$2$"
+  },
+  {
+    "question": "$Take derivative of the function: $y = \\\\ln(\\\\sin x)$$",
+    "variants": [
+      "$y' = \\\\cot x$",
+      "$y' = \\\\ln(\\\\cos x)$",
+      "$y' = -\\frac{\\\\cos x}{\\\\sin x}$",
+      "$y' = -\\frac{1}{\\\\sin x}$",
+      "$y' = \\frac{1}{\\\\cos x}$"
+    ],
+    "correct_answer": "$y' = \\\\cot x$"
+  },
+  {
+    "question": "$Take derivative of the function: $y = \\\\ln(\\\\cos x)$$",
+    "variants": [
+      "$y' = -\\\\tan x$",
+      "$y' = \\\\ln(\\\\sin x)$",
+      "$y' = \\frac{\\\\sin x}{\\\\cos x}$",
+      "$y' = -\\frac{1}{\\\\cos x}$",
+      "$y' = \\frac{1}{\\\\sin x}$"
+    ],
+    "correct_answer": "$y' = -\\\\tan x$"
+  },
+  {
+    "question": "$Find $y'(1)$, if $y = \\\\ln(\\1^{\\2} + 5)$$",
+    "variants": [
+      "$\\frac{1}{3}$",
+      "$2$",
+      "$1$",
+      "$0$",
+      "$3$"
+    ],
+    "correct_answer": "$\\frac{1}{3}$"
+  },
+  {
+    "question": "$If $f(x) = \\1^{\\2} - 4x + 3$ ; $f(a) = f(b)$ ; $a < b$, then$",
+    "variants": [
+      "$a < 2$",
+      "$a > 2$",
+      "$a > 3$",
+      "$a < 1$",
+      "$a > 1$"
+    ],
+    "correct_answer": "$a < 2$"
+  },
+  {
+    "question": "$Take second order derivative of the function: $y = 4\\1^{\\2} + 5\\1^{\\2} - 7x + 1$$",
+    "variants": [
+      "$y'' = 24x + 10$",
+      "$y'' = 12\\1^{\\2} + 10x - 7$",
+      "$y'' = 12x + 10x$",
+      "$y'' = 24\\1^{\\2} + 10$"
+    ],
+    "correct_answer": "$y'' = 24x + 10$"
+  },
+  {
+    "question": "$Take derivative of the function: $y = 4 \\\\sin(6x - 1)$$",
+    "variants": [
+      "$y' = 24 \\\\cos(6x - 1)$",
+      "$y' = 4 \\\\cos(6x - 1)$",
+      "$y' = -24 \\\\cos(6x - 1)$",
+      "$y' = 6 \\\\cos(6x - 1)$",
+      "$y' = 24 \\\\sin(x - 6)$"
+    ],
+    "correct_answer": "$y' = 24 \\\\cos(6x - 1)$"
+  },
+  {
     "question": "$Take derivative of the function: $y = 7^{2x+5}$$",
     "variants": [
       "$y' = 2 \\cdot 7^{2x+5} \\cdot \\\\ln 7$",
@@ -837,29 +638,28 @@
     "correct_answer": "$y' = 3 \\cdot (5\\1^{\\2} - 4x + 1)^2 \\cdot (10x - 4)$"
   },
   {
-    "question": "$Given $f(x) = \\1^{\\2} \\\\sqrt[3]{3\\1^{\\2}}$, find $f'(x)$$",
+    "question": "$Given $f(x) = x \\\\sqrt[3]{\\1^{\\2}}$, find $f'(x)$$",
     "variants": [
-      "$\\frac{7}{4} \\\\sqrt[3]{\\1^{\\2}}$",
-      "$\\frac{3}{4} \\\\sqrt[3]{\\1^{\\2}}$",
-      "$x + 4 \\\\sqrt[3]{3\\1^{\\2}}$",
-      "$4 \\\\sqrt[3]{\\1^{\\2}} + \\\\sqrt[3]{3\\1^{\\2}}$",
-      "$\\frac{4}{7} \\\\sqrt[3]{\\1^{\\2}}$"
+      "$\\frac{7}{4} \\\\sqrt[3]{x}$",
+      "$\\frac{3}{4} \\\\sqrt[3]{x}$",
+      "$x + \\\\sqrt[3]{\\1^{\\2}}$",
+      "$\\\\sqrt[3]{x} + \\\\sqrt[3]{3\\1^{\\2}}$"
     ],
-    "correct_answer": "$\\frac{7}{4} \\\\sqrt[3]{\\1^{\\2}}$"
+    "correct_answer": "$\\frac{7}{4} \\\\sqrt[3]{x}$"
   },
   {
     "question": "$Given $f(x) = \\l\\1^{\\2} x + \\\\ln \\\\co\\1^{\\2} x$, find $f'(x)$$",
     "variants": [
-      "$2 \\lg x$",
+      "$2 \\lg x \\cdot \\frac{1}{x} - \\\\tan x$",
       "$3 \\l\\1^{\\2} x + \\frac{1}{\\\\co\\1^{\\2} x}$",
       "$\\frac{1}{\\\\co\\1^{\\2} x} (2 \\lg x - \\\\sin 2x)$",
       "$2 \\lg x - \\\\sin 2x$",
       "$\\frac{1}{\\\\si\\1^{\\2} x} (2 \\lg x - \\\\sin 2x)$"
     ],
-    "correct_answer": "$\\frac{1}{\\\\co\\1^{\\2} x} (2 \\lg x - \\\\sin 2x)$"
+    "correct_answer": "$2 \\lg x \\cdot \\frac{1}{x} - \\\\tan x$"
   },
   {
-    "question": "$Find the derivative of the function $f(x) = (3x + 2)e^{-2x}$.$",
+    "question": "$Find the derivative of the function $f(x) = (3x + 2)e^{-2x}$$",
     "variants": [
       "$(3x + 5)e^{-2x}$",
       "$3xe^{-2x}$",
@@ -870,7 +670,7 @@
     "correct_answer": "$(-6x - 1)e^{-2x}$"
   },
   {
-    "question": "$Find the derivative of the function $f(x) = rac{5x - 3}{2x - 3}$.$",
+    "question": "$Find the derivative of the function $f(x) = rac{5x - 3}{2x - 3}$$",
     "variants": [
       "$rac{5}{2}$",
       "$rac{20x - 21}{(2x - 3)^2}$",
@@ -881,97 +681,184 @@
     "correct_answer": "$rac{-9}{(2x - 3)^2}$"
   },
   {
-    "question": "$If $y = \\\\co\\1^{\\2} x$, find $y'$$",
+    "question": "$If $y = \\co{2} x$, find $y'$$",
     "variants": [
-      "$4\\\\co\\1^{\\2} x$",
-      "$-4\\\\co\\1^{\\2} x \\cdot \\\\sin x$"
+      "$4\\co{2} x$",
+      "$-4\\co{2} x \\cdot \\sin x$",
+      "$2\\co{2} x \\cdot \\sin x$",
+      "$-2\\co{2} x$"
     ],
-    "correct_answer": "$-4\\\\co\\1^{\\2} x \\cdot \\\\sin x$"
+    "correct_answer": "$-4\\co{2} x \\cdot \\sin x$"
   },
   {
-    "question": "$Find derivative of $f(x) = \\\\ln(\\\\sin x + 2x)$ at the point $x = \\frac{\\pi}{3}$$",
+    "question": "$Find derivative of $f(x) = \\ln(\\sin x + 2x)$ at the point $x = \\frac{\\pi}{3}$$",
     "variants": [
-      "$\\frac{2\\\\sqrt{3}}{3} + 2$",
-      "$1 + 2$"
+      "$\\frac{2\\sqrt{3}}{3} + 2$",
+      "$\\frac{1}{3} + 2$",
+      "$\\frac{1}{\\sin x + 2x}$",
+      "$\\frac{2}{\\sin x + 2x}$"
     ],
-    "correct_answer": "$\\frac{2\\\\sqrt{3}}{3} + 2$"
+    "correct_answer": "$\\frac{2\\sqrt{3}}{3} + 2$"
   },
   {
-    "question": "$Find derivative of $f(x) = (2\\1^{\\2} - 3x + 1)\\\\cos x$ at $x = 0$$",
+    "question": "$Find derivative of $f(x) = (2x^2 - 3x + 1)\\cos x$ at $x = 0$$",
     "variants": [
       "$0$",
-      "$-6$"
+      "$-6$",
+      "$1$",
+      "$-3$"
     ],
     "correct_answer": "$-3$"
   },
   {
-    "question": "$If $y = \\\\ln(e^{-x} + xe^{-x})$, find $y'$$",
+    "question": "$If $y = \\ln(e^{-x} + xe^{-x})$, find $y'$$",
     "variants": [
       "$y' = -\\frac{x}{1 + x}$",
-      "$y' = e^{-x} + xe^{-x}$"
+      "$y' = e^{-x} + xe^{-x}$",
+      "$y' = \\frac{1-x}{1+x}$",
+      "$y' = \\frac{1}{e^{-x} + xe^{-x}}$"
     ],
     "correct_answer": "$y' = -\\frac{x}{1 + x}$"
   },
   {
-    "question": "$Find the interval where the function is increasing: $y = rac{\\1^{\\2}}{3} - \\1^{\\2} - 3x$$",
+    "question": "$Find the interval where the function is increasing: $y = \\frac{x^2}{3} + x^2 - 3x + 5$$",
     "variants": [
-      "$(-\\infty, -1) \\cup (3, +\\infty)$",
-      "$(-\\infty, +\\infty)$",
-      "$(3, +\\infty)$",
-      "$(-1, 3)$",
-      "$(-\\infty, -3)$"
+      "$y \\in (-\\infty; -3) \\cup (1; \\infty)$",
+      "$y \\in (1; \\infty)$",
+      "$y \\in (-\\infty; 1)$",
+      "$y \\in (-3; 1)$"
     ],
-    "correct_answer": "$(-\\infty, -1) \\cup (3, +\\infty)$"
+    "correct_answer": "$y \\in (-\\infty; -3) \\cup (1; \\infty)$"
   },
   {
-    "question": "$Find the interval where the function is decreasing $y = 2\\1^{\\2} \\\\ln x$:$",
+    "question": "$Find the interval where the function is decreasing: $y = \\frac{x^2}{3} - 2x^2 + 3x - 9$$",
     "variants": [
-      "$(0; 2)$",
-      "$(0; \\1^{\\2})$"
+      "$y \\in (1; 3)$",
+      "$y \\in (1; \\infty)$",
+      "$y \\in (-\\infty; 1)$",
+      "$y \\in (-\\infty; 3)$"
+    ],
+    "correct_answer": "$y \\in (1; 3)$"
+  },
+  {
+    "question": "$Find the interval where the function is increasing: $y = \\frac{x^2}{3} - x^2 - 3x$$",
+    "variants": [
+      "$(-\\infty; -1) \\cup (3; +\\infty)$",
+      "$(-\\infty; -3)$",
+      "$(-1; 3)$",
+      "$(3; +\\infty)$"
+    ],
+    "correct_answer": "$(-\\infty; -1) \\cup (3; +\\infty)$"
+  },
+  {
+    "question": "$Find the interval where the function is increasing: $y = 2x^2 - \\ln x$$",
+    "variants": [
+      "$(0; 0.5)$",
+      "$(0; +\\infty)$",
+      "$(0.5; +\\infty)$",
+      "$(1; +\\infty)$"
+    ],
+    "correct_answer": "$(0.5; +\\infty)$"
+  },
+  {
+    "question": "$Find the interval where the function is decreasing $y = 2x^2 \\ln x$:$",
+    "variants": [
+      "$increasing on (0, 2)$",
+      "$decreasing on (0, 1)$",
+      "$(0; 0.5)$",
+      "$(1; 2)$"
     ],
     "correct_answer": "$(0; 0.5)$"
   },
   {
-    "question": "$Find the interval where the function is decreasing $y = \\1^{\\2} e^x$:$",
+    "question": "$Find the interval where the function is decreasing $y = x^2 e^x$:$",
     "variants": [
-      "$(0; 2)$",
-      "$(0; \\1^{\\2})$"
+      "$increasing on (0, 2)$",
+      "$decreasing on (0, 1)$",
+      "$(-\\infty; 0) \\cup (2; +\\infty)$",
+      "$(0; 2)$"
     ],
     "correct_answer": "$(-\\infty; 0) \\cup (2; +\\infty)$"
   },
   {
-    "question": "$$y = \\1^{\\2} e^{-x}$ is$",
+    "question": "$$y = x^2 e^{-x}$ is$",
     "variants": [
-      "$increasing on $(0, 2)$$",
-      "$decreasing on $(0, 1)$$"
+      "$increasing on (0, 2)$",
+      "$decreasing on (0, 1)$",
+      "$increasing on (0, 1)$",
+      "$decreasing on (1, 2)$"
     ],
-    "correct_answer": "$increasing on $(0, 2)$$"
+    "correct_answer": "$increasing on (0, 2)$"
   },
   {
-    "question": "$Find the minimum and maximum values of $y = \\1^{\\2} e^{-x}$:$",
+    "question": "$Find the minimum and maximum values of $y = x^2 e^{-x}$:$",
     "variants": [
       "$y_{\\min} = 1, y_{\\max} = 4e^{-2}$",
-      "$y_{\\min} = 0, y_{\\max} = 4e^{-2}$"
+      "$y_{\\min} = 0, y_{\\max} = 4e^{-2}$",
+      "$y_{\\min} = 0, y_{\\max} = 1$",
+      "$y_{\\min} = 1, y_{\\max} = 0$"
     ],
     "correct_answer": "$y_{\\min} = 0, y_{\\max} = 4e^{-2}$"
   },
   {
-    "question": "$Find the minimum and maximum values of $y = 2\\1^{\\2} \\\\ln x$:$",
+    "question": "$Find the minimum and maximum values of $y = 2x^2 \\ln x$:$",
     "variants": [
-      "$y_{\\max} = 1, y_{\\min} = 0.5$",
-      "$$y_{\\min} = \\frac{1}{2} + \\\\ln 2, y_{\\max}$ doesn't exist$"
+      "$y_{\\max} = 1, y_{\\min} = 4e^{-2}$",
+      "$y_{\\max} = \\frac{1}{2} + \\ln 2, y_{\\min}$ doesn't exist$",
+      "$y_{\\max} = 0, y_{\\min}$ doesn't exist$",
+      "$y_{\\max}$ doesn't exist, $y_{\\min} = 0$"
     ],
-    "correct_answer": "$$y_{\\min} = \\frac{1}{2} \\\\ln 2, y_{\\max}$ doesn't exist$"
+    "correct_answer": "$y_{\\max} = \\frac{1}{2} + \\ln 2, y_{\\min}$ doesn't exist$"
   },
   {
-    "question": "$Find the extreme points of the function: $y = rac{\\1^{\\2}}{3} - 2\\1^{\\2} + 3x - 9$$",
+    "question": "$Find the minimum and maximum values of the function $y = (x+1)^3$$",
     "variants": [
-      "$$y(1)$-max and $y(3)$-min$",
-      "$$y(1)$-min and $y(3)$-max$",
-      "$$y(-1)$-min and $y(-3)$-max$",
-      "$$y(-4)$-max and $y(3)$-min$"
+      "$y_{\\min} = 0,\\ y_{\\max} = 2$",
+      "$y_{\\min}\\ \\text{and}\\ y_{\\max}\\ \\text{doesn't exist}$",
+      "$y_{\\min} = 0,\\ y_{\\max} = -2$",
+      "$y_{\\min}\\ \\text{doesn't exist},\\ y_{\\max} = 2$"
     ],
-    "correct_answer": "$$y(1)$-max and $y(3)$-min$"
+    "correct_answer": "$y_{\\min}\\ \\text{and}\\ y_{\\max}\\ \\text{doesn't exist}$"
+  },
+  {
+    "question": "$Find the minimum and maximum values of the function $y = \\frac{x}{\\1^{\\2} - 6x - 16}$$",
+    "variants": [
+      "$y_{\\min} = -2,\\ y_{\\max} = 8$",
+      "$y_{\\min}\\ \\text{and}\\ y_{\\max}\\ \\text{doesn't exist}$",
+      "$y_{\\min} = 8,\\ y_{\\max} = -2$",
+      "$y_{\\min} = -2,\\ y_{\\max}\\ \\text{doesn't exist}$"
+    ],
+    "correct_answer": "$y_{\\min}\\ \\text{and}\\ y_{\\max}\\ \\text{doesn't exist}$"
+  },
+  {
+    "question": "$Find the minimum and maximum values of the function $y = \\1^{\\2} - 2\\1^{\\2} - 5$$",
+    "variants": [
+      "$y_{\\min} = -1,\\ y_{\\max} = 0$",
+      "$y_{\\min}\\ \\text{and}\\ y_{\\max}\\ \\text{doesn't exist}$",
+      "$y_{\\min} = -6,\\ y_{\\max}\\ \\text{doesn't exist}$",
+      "$y_{\\max} = -6,\\ y_{\\min}\\ \\text{doesn't exist}$"
+    ],
+    "correct_answer": "$y_{\\min} = -6,\\ y_{\\max} = -5$"
+  },
+  {
+    "question": "$Find the minimum and maximum values of the function $y = x - \\\\ln(1+x)$$",
+    "variants": [
+      "$y_{\\min} = -1,\\ y_{\\max} = 0$",
+      "$y_{\\min}\\ \\text{doesn't exist},\\ y_{\\max} = 0$",
+      "$y_{\\min}\\ \\text{doesn't exist},\\ y_{\\max} = 1$",
+      "$y_{\\min} = 0,\\ y_{\\max}\\ \\text{doesn't exist}$"
+    ],
+    "correct_answer": "$y_{\\min} = 0,\\ y_{\\max}\\ \\text{doesn't exist}$"
+  },
+  {
+    "question": "$Find the extreme points of the function: $y = \\frac{\\1^{\\2}}{3} - 2\\1^{\\2} + 3x - 9$$",
+    "variants": [
+      "$y(1)\\text{-max and } y(3)\\text{-min}$",
+      "$y(1)\\text{-min and } y(3)\\text{-max}$",
+      "$y(-1)\\text{-min and } y(-3)\\text{-max}$",
+      "$y(-4)\\text{-max and } y(3)\\text{-min}$"
+    ],
+    "correct_answer": "$y(1)\\text{-max and } y(3)\\text{-min}$"
   },
   {
     "question": "$Find the extreme points of the function: $y = rac{\\1^{\\2}}{3} - 3\\1^{\\2} + 8x + 1$$",
@@ -988,7 +875,11 @@
     "question": "$Find the extreme points of the function: $y = \\1^{\\2} - 6x + 8$$",
     "variants": [
       "$$y(3)$ - min$",
-      "$$y(3)$ - max$"
+      "$$y(3)$ - max$",
+      "$$y(-3)$ - min$",
+      "$$y(-3)$ - max$",
+      "$$y(0)$ - min$",
+      "$$y(0)$ - max$"
     ],
     "correct_answer": "$$y(3)$ - min$"
   },
@@ -1041,15 +932,17 @@
       "$O(0; 0)$ and $\\1_{\\2}(1; rac{1}{2})$",
       "it does not exist",
       "$\\1_{\\2}(1; rac{1}{2})$ and $\\1_{\\2}(2; -8)$",
-      "$M(1; rac{1}{2})$"
+      "$\\1_{\\2}(1; rac{1}{2})$"
     ],
     "correct_answer": "$O(0; 0)$"
   },
   {
-    "question": "$$f(x) = e^{-x^\\frac{\\1}{\\2}}$ is$",
+    "question": "$$f(x) = e^{-\\1^{\\2}}$ is$",
     "variants": [
       "$convex on $(-1; 1)$$",
-      "$convex on $(-\\infty; +\\infty)$$"
+      "$convex on $(-1; +\\infty)$$",
+      "$concave on $(-1; 1)$$",
+      "$concave on $(-1; +\\infty)$$"
     ],
     "correct_answer": "$convex on $(-1; 1)$$"
   },
@@ -1057,7 +950,9 @@
     "question": "$f(x) = \\\\ln(1 + \\1^{\\2})$",
     "variants": [
       "$concave on $(-1; 1)$$",
-      "$concave on $(-1; +\\infty)$$"
+      "$concave on $(-1; +\\infty)$$",
+      "$convex on $(-1; 1)$$",
+      "$convex on $(-1; +\\infty)$$"
     ],
     "correct_answer": "$concave on $(-1; 1)$$"
   },
@@ -1065,33 +960,88 @@
     "question": "$y = \\arctg\\,x - x$",
     "variants": [
       "$concave on $(-\\infty; 0)$ and convex on $(0; +\\infty)$$",
-      "$concave on $(-\\infty; +\\infty)$$"
+      "$concave on $(-\\infty; +\\infty)$$",
+      "$convex on $(-\\infty; 0)$ and concave on $(0; +\\infty)$$",
+      "$convex on $(-\\infty; +\\infty)$$"
     ],
     "correct_answer": "$concave on $(-\\infty; 0)$ and convex on $(0; +\\infty)$$"
+  },
+  {
+    "question": "$Find the equations of the vertical asymptotes of the function: $y = rac{2 - x}{\\1^{\\2} - 9}$$",
+    "variants": [
+      "$x = -3$ and $x = 3$",
+      "$x = 2$",
+      "$x = rac{2}{9}$",
+      "$x = -3$ and $y = 3$",
+      "$y = 2x - 3$"
+    ],
+    "correct_answer": "$x = -3$ and $x = 3$"
+  },
+  {
+    "question": "$Find the equations of the vertical asymptotes of the function: $y = rac{x + 4}{\\1^{\\2} - 25}$$",
+    "variants": [
+      "$x = -5$ and $x = 5$",
+      "$x = -4$",
+      "$x = - rac{4}{25}$",
+      "$y = -5$ and $y = 5$",
+      "$y = -4x + 5$"
+    ],
+    "correct_answer": "$x = -5$ and $x = 5$"
+  },
+  {
+    "question": "$Find the equations of the horizontal asymptotes of the function: $y = rac{2\\1^{\\2} - x}{\\1^{\\2} - 9}$$",
+    "variants": [
+      "$y = 2$",
+      "$x = 2$",
+      "$y = rac{2}{9}$",
+      "$y = -3$ and $y = 3$",
+      "$y = 2x - 3$"
+    ],
+    "correct_answer": "$y = 2$"
+  },
+  {
+    "question": "$Find the equations of the horizontal asymptotes of the function: $y = rac{3\\1^{\\2} + 4}{\\1^{\\2} - 25}$$",
+    "variants": [
+      "$y = 3$",
+      "$x = 3$",
+      "$y = rac{4}{25}$",
+      "$y = -5$ and $y = 5$",
+      "$y = -4x + 5$"
+    ],
+    "correct_answer": "$y = 3$"
   },
   {
     "question": "$Take differential of the function: $y = \\\\si\\1^{\\2}(2x + 6)$$",
     "variants": [
       "$dy = 6 \\\\si\\1^{\\2}(2x + 6) \\cdot \\\\cos(2x + 6) \\cdot dx$",
-      "$dy = 6 \\\\co\\1^{\\2}(2x + 6) \\cdot dx$"
+      "$dy = 2 \\\\si\\1^{\\2}(2x + 6) \\cdot \\\\cos(2x + 6) \\cdot dx$",
+      "$dy = 6 \\\\co\\1^{\\2}(2x + 6) \\cdot dx$",
+      "$dy = \\\\cos(2x + 6) \\cdot dx$",
+      "$dy = 2 \\\\co\\1^{\\2}(2x + 6) \\cdot dx$"
     ],
     "correct_answer": "$dy = 6 \\\\si\\1^{\\2}(2x + 6) \\cdot \\\\cos(2x + 6) \\cdot dx$"
   },
   {
-    "question": "$Take differential of the function: $y = \\\\sin(\\\\ln(x + 6))$$",
+    "question": "$Take differential of the function: $y = \\\\sin(\\\\ln x + 6)$$",
     "variants": [
       "$dy = \\\\cos(\\\\ln(x) + 6) \\cdot \\frac{1}{x} \\cdot dx$",
-      "$dy = \\\\cos(\\\\ln(x + 6)) \\cdot \\frac{1}{x} \\cdot dx$"
+      "$dy = \\\\cos(\\\\ln(x) + 6) \\cdot \\frac{1}{\\\\ln x + 6} \\cdot dx$",
+      "$dy = \\\\sin(\\\\ln(x) + 6) \\cdot \\frac{1}{x} \\cdot dx$",
+      "$dy = \\\\cos(\\\\ln(x) + 6) \\cdot dx$",
+      "$dy = \\\\sin(\\\\ln(x) + 6) \\cdot dx$"
     ],
-    "correct_answer": "$dy = \\\\cos(\\\\ln(x + 6)) \\cdot \\frac{1}{x + 6} \\cdot dx$"
+    "correct_answer": "$dy = \\\\cos(\\\\ln(x) + 6) \\cdot \\frac{1}{x} \\cdot dx$"
   },
   {
     "question": "$Take differential of the function: $y = (3\\1^{\\2} + 7)^4$$",
     "variants": [
       "$dy = 24(3\\1^{\\2} + 7)^3 \\cdot x \\cdot dx$",
-      "$dy = 24(\\1^{\\2}) \\cdot dx$"
+      "$dy = 12(3\\1^{\\2} + 7)^2 \\cdot x \\cdot dx$",
+      "$dy = 24\\1^{\\2} \\cdot dx$",
+      "$dy = 4(3\\1^{\\2} + 7)^3 \\cdot 3x \\cdot dx$",
+      "$dy = 4(3\\1^{\\2} + 7)^3 \\cdot dx$"
     ],
-    "correct_answer": "$dy = 4(3\\1^{\\2} + 7)^3 \\cdot 6x \\cdot dx$"
+    "correct_answer": "$dy = 24(3\\1^{\\2} + 7)^3 \\cdot x \\cdot dx$"
   },
   {
     "question": "$Take differential of the function: $y = 3^{\\\\sin x}$$",
@@ -1099,7 +1049,8 @@
       "$dy = 3^{\\\\sin x} \\cdot \\\\cos x \\cdot \\\\ln 3 \\cdot dx$",
       "$dy = 3^{\\\\sin x} \\cdot \\\\cos x \\cdot \\\\ln 3$",
       "$dy = 3^{\\\\sin x} \\cdot \\\\ln 3 \\cdot dx$",
-      "$dy = 3^{\\\\cos x} \\cdot \\\\ln 3 \\cdot dx$"
+      "$dy = 3^{\\\\cos x} \\cdot \\\\ln 3 \\cdot dx$",
+      "$dy = 3^{\\\\sin x} \\cdot dx$"
     ],
     "correct_answer": "$dy = 3^{\\\\sin x} \\cdot \\\\cos x \\cdot \\\\ln 3 \\cdot dx$"
   },
@@ -1107,6 +1058,9 @@
     "question": "$Take differential of the function: $y = 5^{\\\\cos x}$$",
     "variants": [
       "$dy = 5^{\\\\cos x} \\cdot (-\\\\sin x) \\cdot \\\\ln 5 \\cdot dx$",
+      "$dy = 5^{\\\\cos x} \\cdot \\\\sin x \\cdot \\\\ln 5 \\cdot dx$",
+      "$dy = 5^{\\\\sin x} \\cdot (-\\\\cos x) \\cdot \\\\ln 5 \\cdot dx$",
+      "$dy = 5^{\\\\cos x} \\cdot \\\\ln 5 \\cdot dx$",
       "$dy = 5^{\\\\sin x} \\cdot \\\\ln 5 \\cdot dx$"
     ],
     "correct_answer": "$dy = 5^{\\\\cos x} \\cdot (-\\\\sin x) \\cdot \\\\ln 5 \\cdot dx$"
@@ -1115,7 +1069,10 @@
     "question": "$Take differential of the function: $y = \\\\tan(\\\\sqrt{x})$$",
     "variants": [
       "$dy = \\frac{1}{2\\\\sqrt{x} \\\\co\\1^{\\2}(\\\\sqrt{x})} \\cdot dx$",
-      "$dy = \\frac{2}{\\\\co\\1^{\\2}\\left(\\frac{1}{2\\\\sqrt{x}}\\right)} \\cdot dx$"
+      "$dy = \\frac{1}{2\\\\sqrt{x} \\\\sin(\\\\sqrt{x})} \\cdot dx$",
+      "$dy = \\frac{1}{2\\\\sqrt{x} \\\\tan(\\\\sqrt{x})} \\cdot dx$",
+      "$dy = \\frac{2}{\\\\co\\1^{\\2}\\left(\\frac{1}{2\\\\sqrt{x}}\\right)} \\cdot dx$",
+      "$dy = \\frac{1}{\\\\co\\1^{\\2}(\\\\sqrt{x})} \\cdot dx$"
     ],
     "correct_answer": "$dy = \\frac{1}{2\\\\sqrt{x} \\\\co\\1^{\\2}(\\\\sqrt{x})} \\cdot dx$"
   },
@@ -1123,7 +1080,10 @@
     "question": "$Take differential of the function: $y = \\\\ln(\\\\sqrt{x})$$",
     "variants": [
       "$dy = \\frac{1}{2x} \\cdot dx$",
-      "$dy = \\frac{1}{2 \\\\ln x \\cdot \\\\sqrt{x}} \\cdot dx$"
+      "$dy = \\frac{1}{2 \\\\ln x \\cdot \\\\sqrt{x}} \\cdot dx$",
+      "$dy = \\frac{1}{x} \\cdot dx$",
+      "$dy = \\frac{1}{2\\\\sqrt{x}} \\cdot dx$",
+      "$dy = \\frac{1}{\\\\sqrt{x}} \\cdot dx$"
     ],
     "correct_answer": "$dy = \\frac{1}{2x} \\cdot dx$"
   },
@@ -1143,8 +1103,8 @@
       "$\\frac{1}{2} \\\\ln(1 + \\1^{\\2}) + C$",
       "$\\\\arctan(x) + C$",
       "$\\\\ln(1 + \\1^{\\2}) + C$",
-      "$e^{\\1^{\\2}} + C$",
-      "$\\\\ln(1 + x) + C$"
+      "$\\\\ln(1 + x) + C$",
+      "$e^{\\1^{\\2}} + C$"
     ],
     "correct_answer": "$\\frac{1}{2} \\\\ln(1 + \\1^{\\2}) + C$"
   },
@@ -1185,10 +1145,10 @@
     "question": "$Evaluate the indefinite integral: $\\int 2^{5x+4} \\, dx$$",
     "variants": [
       "$\\frac{1}{5 \\\\ln 2} 2^{5x+4} + C$",
-      "$2^{5x+4} + C$",
-      "$\\frac{2^{5x+4}}{\\\\ln 2} + C$",
+      "$2^{5x+4} \\\\ln 2 + C$",
+      "$\\frac{1}{\\\\ln 2} 2^{5x+4} + C$",
       "$\\frac{5}{\\\\ln 2} 2^{5x+4} + C$",
-      "$\\frac{1}{\\\\ln 2} 2^{5x+4} + C$"
+      "$\\frac{2^{5x+4}}{5} + C$"
     ],
     "correct_answer": "$\\frac{1}{5 \\\\ln 2} 2^{5x+4} + C$"
   },
@@ -1330,7 +1290,7 @@
       "$\\int u \\cdot dv = u \\cdot v - \\int v \\cdot du$",
       "$\\int u \\cdot dv = u \\cdot v + \\int v \\cdot du$",
       "$\\int u \\cdot dv = u \\cdot v - \\int u \\cdot dv$",
-      "$\\int u \\cdot dv = v \\cdot du$",
+      "$\\int u \\cdot dv = \\int v \\cdot du$",
       "$\\int u \\cdot dv = \\1^{\\2} - \\1^{\\2} - \\int v \\cdot du$"
     ],
     "correct_answer": "$\\int u \\cdot dv = u \\cdot v - \\int v \\cdot du$"
@@ -1347,7 +1307,7 @@
     "correct_answer": "$\\int f \\cdot g \\cdot dx = \\int f \\cdot dx \\cdot \\int g \\cdot dx$"
   },
   {
-    "question": "$Evaluate the definite integral: $\\int_\\1^{\\2} (\\1^{\\2} + 3) dx$$",
+    "question": "$Evaluate the definite integral: $\\int_\\1^{\\2} (\\1^{\\2} + 3) \\cdot dx$$",
     "variants": [
       "$\\frac{10}{3}$",
       "$\\frac{4}{3}$",
@@ -1406,14 +1366,13 @@
     "variants": [
       "$\\int_a^b (g(x) - f(x))\\,dx$",
       "$\\int_a^b (f(x) - g(x))\\,dx$",
-      "$\\int_a^b (g(x) - f(x))\\,dx$",
-      "$\\int_a^b f(x)\\,dx$",
+      "$\\int_a^b g(x)\\,dx$",
       "$\\int_a^b (g(x) + f(x))\\,dx$"
     ],
     "correct_answer": "$\\int_a^b (f(x) - g(x))\\,dx$"
   },
   {
-    "question": "Formula that makes connection between definite and indefinite integrals is (Fundamental Theorem):",
+    "question": "Formula that makes connection between definite and indefinite integrals is (Fundamental theorem):",
     "variants": [
       "$\\int_a^b f(x)\\,dx = F(b) - F(a)$",
       "$\\int_a^b f(x)\\,dx = F(x) + C$",
@@ -1434,7 +1393,7 @@
     "correct_answer": "$\\frac{32}{3}$"
   },
   {
-    "question": "$Find the area bounded between two curves: $y(x) = \\1^{\\2} - 2x$ and $g(x) = 2x$$",
+    "question": "$Find the area bounded between two curves: $y(x) = \\1^{\\2} - 2x$ and $y(x) = \\1^{\\2} + 2x$$",
     "variants": [
       "$36$",
       "$3$",
@@ -1445,29 +1404,18 @@
     "correct_answer": "$36$"
   },
   {
-    "question": "$Find the area bounded between two curves: $g(x)$ and $y(x)$ as shown in the graph$",
-    "variants": [
-      "$\\frac{32}{3}$",
-      "$32$",
-      "$16$",
-      "$\\frac{64}{3}$",
-      "$8$"
-    ],
-    "correct_answer": "$\\frac{32}{3}$"
-  },
-  {
-    "question": "$Find the area bounded between two curves: $y(x) = 2\\1^{\\2} + 4$ and $g(x) = -2x$$",
+    "question": "$Find the area bounded between two curves: $y(x) = 2\\1^{\\2} + 4$ and $y(x) = -2x$$",
     "variants": [
       "$\\frac{8}{3}$",
       "$\\frac{25}{2}$",
       "$12$",
-      "$1$",
-      "$\\frac{1}{3}$"
+      "$\\frac{1}{3}$",
+      "$1$"
     ],
     "correct_answer": "$\\frac{8}{3}$"
   },
   {
-    "question": "$Find the area bounded between two curves: $y(x) = \\1^{\\2} - 3\\1^{\\2}$ and $g(x) = x$$",
+    "question": "$Find the area bounded between two curves: $y(x) = \\1^{\\2} - 3\\1^{\\2}$ and $y(x) = x$$",
     "variants": [
       "$\\frac{9}{2}$",
       "$\\frac{25}{2}$",
@@ -1510,68 +1458,174 @@
     "correct_answer": "$z_y = \\1^{\\2} - 4$"
   },
   {
-    "question": "$Find the partial derivative $z_x$ of the function of two variables: $z(x, y) = \\\\ln(x + \\1^{\\2})$$",
+    "question": "$Find the partial derivative $z_x$ of the function of two variables: $z(x, y) = \\1^{\\2} \\\\sin y$$",
     "variants": [
-      "$z_x = \\\\frac{1}{x}$",
-      "$z_x = \\\\\\ln x + 2y$"
+      "$z_x = 2x \\\\sin y$",
+      "$z_x = 2x \\\\sin y + \\1^{\\2} \\\\cos y$",
+      "$z_x = \\\\cos y$",
+      "$z_x = 2x \\\\cos y$"
     ],
-    "correct_answer": "$z_x = \\\\frac{1}{x + \\1^{\\2}}$"
+    "correct_answer": "$z_x = 2x \\\\sin y$"
   },
   {
-    "question": "$Find the partial derivative $z_y$ of the function of two variables: $z(x, y) = \\\\ln(x + \\1^{\\2})$$",
+    "question": "$Find the partial derivative $z_y$ of the function of two variables: $z(x, y) = \\1^{\\2} \\\\sin y$$",
+    "variants": [
+      "$z_y = \\1^{\\2} \\\\cos y$",
+      "$z_y = 2x \\\\sin y + \\1^{\\2} \\\\cos y$",
+      "$z_y = 2x \\\\cos y$",
+      "$z_y = \\\\cos y$"
+    ],
+    "correct_answer": "$z_y = \\1^{\\2} \\\\cos y$"
+  },
+  {
+    "question": "$Find the partial derivative $z_x$ of the function of two variables: $z(x, y) = \\1^{\\2} \\\\cos y$$",
+    "variants": [
+      "$z_x = 3\\1^{\\2} \\\\cos y$",
+      "$z_x = 3x \\\\cos y - \\1^{\\2} \\\\sin y$",
+      "$z_x = 3x \\\\sin y$",
+      "$z_x = \\\\cos y$"
+    ],
+    "correct_answer": "$z_x = 3\\1^{\\2} \\\\cos y$"
+  },
+  {
+    "question": "$Find the partial derivative $z_y$ of the function of two variables: $z(x, y) = \\1^{\\2} \\\\cos y$$",
+    "variants": [
+      "$z_y = -\\1^{\\2} \\\\sin y$",
+      "$z_y = 2x \\\\sin y + \\1^{\\2} \\\\cos y$",
+      "$z_y = -3x \\\\sin y$",
+      "$z_y = \\\\sin y$"
+    ],
+    "correct_answer": "$z_y = -\\1^{\\2} \\\\sin y$"
+  },
+  {
+    "question": "$Find the partial derivative $\\frac{\\partial \\xi}{\\partial x}$ of the function of two variables: $\\xi(x, y) = \\1^{\\2} \\\\ln y$$",
+    "variants": [
+      "$2x \\\\ln y$",
+      "$\\frac{\\1^{\\2}}{y}$",
+      "$2x + \\frac{1}{y}$",
+      "$2x y$"
+    ],
+    "correct_answer": "$2x \\\\ln y$"
+  },
+  {
+    "question": "$Find the partial derivative $\\frac{\\partial \\xi}{\\partial y}$ of the function of two variables: $\\xi(x, y) = \\1^{\\2} \\\\ln y$$",
+    "variants": [
+      "$\\frac{\\1^{\\2}}{y}$",
+      "$2x + \\frac{1}{y}$",
+      "$2x y$",
+      "$\\frac{1}{y}$"
+    ],
+    "correct_answer": "$\\frac{\\1^{\\2}}{y}$"
+  },
+  {
+    "question": "$Find the partial derivative $\\frac{\\partial \\xi}{\\partial x}$ of the function of two variables: $\\xi(x, y) = \\\\sin x + \\\\ln y$$",
+    "variants": [
+      "$\\\\cos x$",
+      "$\\\\cos x + \\\\ln y$",
+      "$\\\\sin x$",
+      "$\\\\ln y$"
+    ],
+    "correct_answer": "$\\\\cos x$"
+  },
+  {
+    "question": "$Find the partial derivative $z_y$ of the function of two variables: $z(x, y) = \\\\sin x + \\\\ln y$$",
+    "variants": [
+      "$z_y = \\frac{1}{y}$",
+      "$z_y = \\\\sin x + \\frac{1}{y}$",
+      "$z_y = \\\\cos x$",
+      "$z_y = \\\\ln y$"
+    ],
+    "correct_answer": "$z_y = \\frac{1}{y}$"
+  },
+  {
+    "question": "$Find the partial derivative $z_x$ of the function of two variables: $z(x, y) = \\1^{\\2} + \\\\cos y$$",
+    "variants": [
+      "$z_x = 3\\1^{\\2}$",
+      "$z_x = \\\\cos x + 3\\1^{\\2}$",
+      "$z_x = 2x$",
+      "$z_x = \\\\sin y$"
+    ],
+    "correct_answer": "$z_x = 3\\1^{\\2}$"
+  },
+  {
+    "question": "$Find the partial derivative $z_y$ of the function of two variables: $z(x, y) = \\1^{\\2} + \\\\cos y$$",
+    "variants": [
+      "$z_y = -\\\\sin y$",
+      "$z_y = \\\\cos x + 3\\1^{\\2}$",
+      "$z_y = 2y$",
+      "$z_y = \\\\sin y$"
+    ],
+    "correct_answer": "$z_y = -\\\\sin y$"
+  },
+  {
+    "question": "$Find the partial derivative $z_x$ of the function of two variables: $z(x, y) = \\\\ln x + \\1^{\\2}$$",
+    "variants": [
+      "$z_x = \\\\frac{1}{x}$",
+      "$z_x = \\\\\\ln x + 2y$",
+      "$z_x = 2x$",
+      "$z_x = \\\\ln x$"
+    ],
+    "correct_answer": "$z_x = \\\\frac{1}{x}$"
+  },
+  {
+    "question": "$Find the partial derivative $z_y$ of the function of two variables: $z(x, y) = \\\\ln x + \\1^{\\2}$$",
     "variants": [
       "$z_y = 2y$",
-      "$z_y = \\\\\\ln x + 2y$"
+      "$z_y = \\\\\\ln x + 2y$",
+      "$z_y = \\\\ln x$",
+      "$z_y = 2x$"
     ],
-    "correct_answer": "$z_y = \\\\frac{1}{x + \\1^{\\2}} \\\\cdot 2y$"
+    "correct_answer": "$z_y = 2y$"
   },
   {
     "question": "$Test the function of two variables on extreme points: $z(x, y) = 2x + 2y - \\1^{\\2} - \\1^{\\2}$$",
     "variants": [
       "$z_{\\\\text{MAX}}(1,1) = 2$",
-      "$z_{\\\\text{MAX}}(-1,-1) = 6$"
+      "$z_{\\\\text{MAX}}(0,0) = 0$",
+      "$z_{\\\\text{MIN}}(1,1) = 2$",
+      "$z_{\\\\text{MIN}}(0,0) = 0$"
     ],
     "correct_answer": "$z_{\\\\text{MAX}}(1,1) = 2$"
   },
   {
     "question": "$Test the function of two variables on extreme points: $z(x, y) = \\1^{\\2} + 3(y + 2)^2$$",
     "variants": [
-      "$z_{MAX}(0, -2) = 0$",
-      "$z_{MIN}(0, -2) = 0$",
-      "$z_{MIN}(-1, -1) = 4$",
-      "$$(1,1)$ — saddle point$"
+      "$z_{ ext{MAX}}(0, -2) = 0$",
+      "$z_{ ext{MIN}}(0, -2) = 0$",
+      "$z_{ ext{MIN}}(-1, -1) = 4$",
+      "$z(1,1) = \\text{saddle point}$"
     ],
-    "correct_answer": "$z_{MIN}(0, -2) = 0$"
+    "correct_answer": "$z_{ ext{MIN}}(0, -2) = 0$"
   },
   {
     "question": "$Test the function of two variables on extreme points: $z = \\1^{\\2} + \\1^{\\2} - 4x + 6y + 8$$",
     "variants": [
-      "$z_{MIN}(2, -3) = -4$",
-      "$z_{MAX}(2, -3) = -4$",
-      "$z_{MAX}(-2, 3) = 47$",
-      "$$(-2, 3)$ — saddle point$"
+      "$z_{ ext{MIN}}(2, -3) = -4$",
+      "$z_{ ext{MAX}}(2, -3) = -4$",
+      "$z_{ ext{MAX}}(2, 3) = 47$",
+      "$z(-2, 3) = \\text{saddle point}$"
     ],
-    "correct_answer": "$z_{MIN}(2, -3) = -4$"
+    "correct_answer": "$z_{ ext{MIN}}(2, -3) = -4$"
   },
   {
     "question": "$Test the function of two variables on extreme points: $z = -\\1^{\\2} - \\1^{\\2} + 8x - 4y + 2$$",
     "variants": [
-      "$z_{MAX}(4, -2) = 22$",
-      "$z_{MIN}(4, -2) = 22$",
-      "$z_{MAX}(-4, 2) = 22$",
-      "$$(-2, 3)$ — saddle point$"
+      "$z_{ ext{MAX}}(4, -2) = 22$",
+      "$z_{ ext{MIN}}(4, -2) = 22$",
+      "$z_{ ext{MAX}}(-4, 2) = 22$",
+      "$z(-2, 3) = \\text{saddle point}$"
     ],
-    "correct_answer": "$z_{MAX}(4, -2) = 22$"
+    "correct_answer": "$z_{ ext{MAX}}(4, -2) = 22$"
   },
   {
     "question": "$Test the function of two variables on extreme points: $z = \\1^{\\2} - \\1^{\\2} - 4x + 6y + 8$$",
     "variants": [
-      "$$(2, 3)$ — saddle point$",
-      "$z_{MAX}(2, 3) = 13$",
-      "$z_{MIN}(2, 3) = 13$",
-      "$z_{MIN}(2, -3) = -4$"
+      "$z(2, 3) = \\text{saddle point}$",
+      "$z_{ ext{MIN}}(2, 3) = 13$",
+      "$z_{ ext{MAX}}(2, 3) = 13$",
+      "$z_{ ext{MIN}}(2, -3) = -4$"
     ],
-    "correct_answer": "$$(2, 3)$ — saddle point$"
+    "correct_answer": "$z(2, 3) = \\text{saddle point}$"
   },
   {
     "question": "$Evaluate the iterated integral: $\\int_\\1^{\\2} \\left( \\int_\\1^{\\2} (\\1^{\\2} + y) \\, dx \\right) dy$$",
@@ -1621,23 +1675,23 @@
     "question": "$Reduce the double integral to iterated integral: $\\iint_D f(x,y) \\, dS$. Region $D$ is depicted as the triangle bounded by $x=0$, $x=10$, and $y=2x$.$",
     "variants": [
       "$\\in\\1_{\\2}^{10} \\left( \\in\\1_{\\2}^{2x} f(x,y) \\, dy \\right) dx$",
-      "$\\in\\1_{\\2}^{10} \\left( \\in\\1_{\\2}^{\\frac{\\1}{\\2}} f(x,y) \\, dx \\right) dy$",
-      "$\\in\\1_{\\2}^{10} \\left( \\in\\1_{\\2}^{\\frac{\\1}{\\2}} f(x,y) \\, dy \\right) dx$",
-      "$\\in\\1_{\\2}^{20} \\left( \\in\\1_{\\2}^{\\frac{\\1}{\\2}} f(x,y) \\, dx \\right) dy$",
-      "$\\in\\1_{\\2}^{20} \\left( \\in\\1_{\\2}^{2y} f(x,y) \\, dy \\right) dx$"
+      "$\\int_\\1^{\\2} \\left( \\in\\1_{\\2}^y f(x,y) \\, dx \\right) dy$",
+      "$\\in\\1_{\\2}^{10} \\left( \\in\\1_{\\2}^x f(x,y) \\, dx \\right) dy$",
+      "$\\in\\1_{\\2}^{10} \\left( \\in\\1_{\\2}^x f(x,y) \\, dy \\right) dx$",
+      "$\\int_\\1^{\\2} \\left( \\in\\1_{\\2}^{10} f(x,y) \\, dx \\right) dy$"
     ],
     "correct_answer": "$\\in\\1_{\\2}^{10} \\left( \\in\\1_{\\2}^{2x} f(x,y) \\, dy \\right) dx$"
   },
   {
-    "question": "$Reduce the double integral to an iterated integral: $$\\iint_D f(x,y)\\,dS$$ where the region $D$ is bounded by $y=2x$ and $x=\\\\sqrt{y}$.$",
+    "question": "$Reduce the double integral to an iterated integral: $$\\iint_D f(x,y)\\,dS$$ where the region $D$ is bounded by $y = 2x$ and $x = \\1^{\\2}$.$",
     "variants": [
-      "$\\int_\\1^{\\2} \\int_{2x}^{\\1^{\\2}} f(x,y)\\,dy\\,dx$",
-      "$\\in\\1_{\\2}^{\\\\sqrt{2}} \\int_{2x}^{\\1^{\\2}} f(x,y)\\,dy\\,dx$",
+      "$\\int_\\1^{\\2} \\int_{2x}^{\\\\sqrt[3]{x}} f(x,y)\\,dy\\,dx$",
+      "$\\in\\1_{\\2}^{\\\\sqrt[3]{2}} \\int_{2x}^{\\1^{\\2}} f(x,y)\\,dy\\,dx$",
       "$\\int_\\1^{\\2} \\int_{\\1^{\\2}}^{2x} f(x,y)\\,dy\\,dx$",
-      "$\\in\\1_{\\2}^{\\\\sqrt{2}} \\int_{\\1^{\\2}}^{2x} f(x,y)\\,dy\\,dx$",
-      "$\\int_\\1^{\\2} \\int_{\\\\sqrt{y}}^{\\frac{\\1}{\\2}} f(x,y)\\,dx\\,dy$"
+      "$\\in\\1_{\\2}^{\\\\sqrt[3]{2}} \\int_{\\1^{\\2}}^{2x} f(x,y)\\,dy\\,dx$",
+      "$\\in\\1_{\\2}^{\\\\sqrt[3]{2}} \\int_{2x}^{\\1^{\\2}} f(x,y)\\,dy\\,dx$"
     ],
-    "correct_answer": "$\\int_\\1^{\\2} \\int_{\\\\sqrt{y}}^{\\frac{\\1}{\\2}} f(x,y)\\,dx\\,dy$"
+    "correct_answer": "$\\int_\\1^{\\2} \\int_{\\1^{\\2}}^{2x} f(x,y)\\,dy\\,dx$"
   },
   {
     "question": "$Find the common term of the number series: $$\\frac{1}{2} + \\frac{1}{4} + \\frac{1}{6} + \\frac{1}{8} + \\dots$$$",
@@ -1651,13 +1705,46 @@
     "correct_answer": "$\\frac{1}{2n}$"
   },
   {
+    "question": "$Find the common term of the number series: $\\frac{1}{3} + \\frac{1}{6} + \\frac{1}{9} + \\frac{1}{12} + \\ldots$$",
+    "variants": [
+      "$\\frac{1}{3n}$",
+      "$\\frac{1}{2n}$",
+      "$\\frac{1}{2n+1}$",
+      "$\\frac{1}{n+1}$",
+      "$\\frac{n}{2n-1}$"
+    ],
+    "correct_answer": "$\\frac{1}{3n}$"
+  },
+  {
+    "question": "$Find the common term of the number series: $\\frac{1}{2} + \\frac{1}{3} + \\frac{1}{4} + \\frac{1}{5} + \\ldots$$",
+    "variants": [
+      "$\\frac{1}{n+1}$",
+      "$\\frac{1}{2n}$",
+      "$\\frac{1}{2n+1}$",
+      "$\\frac{1}{3n}$",
+      "$\\frac{n}{2n-1}$"
+    ],
+    "correct_answer": "$\\frac{1}{n+1}$"
+  },
+  {
+    "question": "$What series among harmonic series i\\frac{\\1}{\\2}re convergent: a) $\\sum\\limits_{n=1}^{\\infty} \\frac{1}{n}$ ; b) $\\sum\\limits_{n=1}^{\\infty} \\frac{1}{\\\\sqrt{n}}$ ; c) $\\sum\\limits_{n=1}^{\\infty} \\frac{1}{n^{1.5}}$ ; d) $\\sum\\limits_{n=1}^{\\infty} \\frac{1}{\\1^{\\2}}$ ; e) $\\sum\\limits_{n=1}^{\\infty} \\frac{1}{n^{1.75}}$$",
+    "variants": [
+      "d)",
+      "a)",
+      "b)",
+      "c)",
+      "e)"
+    ],
+    "correct_answer": "d)"
+  },
+  {
     "question": "$What series among harmonic series i\\frac{\\1}{\\2}re divergent?$",
     "variants": [
       "$\\sum_{n=1}^{\\infty} \\frac{1}{n}$",
       "$\\sum_{n=1}^{\\infty} \\frac{1}{\\1^{\\2}}$",
       "$\\sum_{n=1}^{\\infty} \\frac{1}{\\1^{\\2}}$",
-      "$\\sum_{n=1}^{\\infty} \\frac{1}{\\1^{\\2}}$",
-      "$\\sum_{n=1}^{\\infty} \\frac{1}{n^{\\pi}}$"
+      "$\\sum_{n=1}^{\\infty} \\frac{1}{n^r}$",
+      "$\\sum_{n=1}^{\\infty} \\frac{1}{n^{\\p\\1^{\\2}}}$"
     ],
     "correct_answer": "$\\sum_{n=1}^{\\infty} \\frac{1}{n}$"
   },
@@ -1787,8 +1874,8 @@
       "c)",
       "a) and c) and d)",
       "b) and c) and e)",
-      "c) and d)",
-      "c) and e)"
+      "b) and d)",
+      "c) and d"
     ],
     "correct_answer": "c)"
   },
@@ -1826,11 +1913,11 @@
     "correct_answer": "b) and d)"
   },
   {
-    "question": "$What series among the following alternating series i\\frac{\\1}{\\2}re divergent: a) $\\sum_{n=1}^{\\infty} (-1)^n \\frac{1}{\\\\sqrt[3]{n}}$; b) $\\sum_{n=1}^{\\infty} (-1)^n \\frac{1}{\\1^{\\2}}$; c) $\\sum_{n=1}^{\\infty} (-1)^n \\frac{1}{n}$; d) $\\sum_{n=1}^{\\infty} (-1)^n \\frac{1}{\\\\sqrt{n}}$; e) $\\sum_{n=1}^{\\infty} (-1)^n \\frac{2n}{5n - 3}$$",
+    "question": "$What series among the following alternating series i\\frac{\\1}{\\2}re divergent: $\\sum_{n=1}^{\\infty} (-1)^n \\frac{1}{\\\\sqrt[3]{n}}$?$",
     "variants": [
+      "a), b), and d)",
       "c)",
-      "a) and b) and c) and d)",
-      "b) and c) and e)",
+      "b) and c) and d)",
       "c) and e) and d)",
       "a) and c)"
     ],
