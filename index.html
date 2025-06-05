@@ -2450,18 +2450,28 @@
                 score++;
                 document.getElementById('score').textContent = score;
             }
-            
-            // Автоматически переходим к следующему вопросу с небольшой задержкой
+              // Автоматически переходим к следующему вопросу только если ответ правильный
             setTimeout(() => {
-                // Переходим к следующему вопросу
-                currentQuestionIndex = (currentQuestionIndex + 1) % questions.length;
-                if (currentQuestionIndex === 0) {
-                    // Если прошли все вопросы, показываем результат
-                    alert(`Тест завершен! Ваш результат: ${score} из ${questions.length}`);
+                if (isCorrect) {
+                    // Только если ответ правильный, переходим к следующему вопросу
+                    if (currentQuestionIndex < questions.length - 1) {
+                        currentQuestionIndex++;
+                        showNextQuestion();
+                    } else {
+                        alert('Тест завершен! Ваш результат: ' + score + ' из ' + questions.length);
+                    }
                 } else {
-                    showNextQuestion();
+                    // Если ответ неверный — сбрасываем флаг выбранного ответа для повторной попытки
+                    answerSelected = false;
+                    
+                    // Делаем кнопки снова активными для новой попытки на этом же вопросе
+                    document.querySelectorAll('.option').forEach(opt => {
+                        opt.disabled = false;
+                        // Убираем классы подсветки
+                        opt.classList.remove('correct', 'incorrect');
+                    });
                 }
-            }, 1200); // задержка 1.2 секунды перед следующим вопросом
+            }, 1200); // задержка 1.2 секунды
         }
           // Запускаем первый вопрос
         showNextQuestion();
